@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.unico.hello"
-        version="0.7.1">
+        id="com.unico.check"
+        version="0.7.2">
 
-  <name>Hello</name>
+  <name>Unico Check</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/hello.js" target="js/hello.js"/>
+  <asset src="www/check.js" target="js/check.js"/>
 
-  <js-module src="www/hello.js" name="hello">
-    <clobbers target="hello" />
+  <js-module src="www/check.js" name="check">
+    <clobbers target="check" />
   </js-module>
 
   <platform name="android">
