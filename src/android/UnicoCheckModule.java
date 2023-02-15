@@ -1,4 +1,4 @@
-package com.example.plugin;
+package com.unico.plugin;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -38,7 +38,7 @@ import java.util.List;
 
 import java.util.logging.Logger;
 
-import com.example.plugin.UnicoConfigDefault;
+import com.unico.plugin.UnicoConfigDefault;
 
 import static androidx.core.app.ActivityCompat.requestPermissions;
 

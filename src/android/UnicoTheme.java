@@ -1,4 +1,4 @@
-package com.example.plugin;
+package com.unico.plugin;
 
 import com.acesso.acessobio_android.onboarding.IAcessoBioTheme;
 
