@@ -59,7 +59,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         SMART,
         LIVENESS,
         CNH_FRONT,
-        CNH_BACK
+        CNH_BACK,
         RG_FRONT,
         RG_BACK,
 		OUT_FRONT,
