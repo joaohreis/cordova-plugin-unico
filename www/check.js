@@ -1,36 +1,46 @@
-/*global cordova, module*/
+var argscheck = require('cordova/argscheck'),
+    utils = require('cordova/utils'),
+    exec = require('cordova/exec');
 
-module.exports = {
-    startCameraSmart: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraSmart", []);
-    }
-	
-	startCameraLiveness: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraLiveness", []);
-    }
-	
-	startCameraCNHFront: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraCNHFront", []);
-    }
-	
-	startCameraCNHBack: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraCNHBack", []);
-    }
-	
-	startCameraRGFront: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraRGFront", []);
-    }
-	
-	startCameraRGBack: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraRGBack", []);
-    }
-	
-	startCameraOUTFront: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraOUTFront", []);
-    }
-	
-	startCameraOUTBack: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraOUTBack", []);
-    }
-			
+var PLUGIN_NAME = "UnicoCheckModule";
+
+var check = function() {};
+
+function isFunction(obj) {
+  return !!(obj && obj.constructor && obj.call && obj.apply);
 };
+
+
+check.startCameraSmart = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraSmart", []);
+}
+
+check.startCameraLiveness = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraLiveness", []);
+}
+
+check.startCameraCNHFront = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraCNHFront", []);
+}
+
+check.startCameraCNHBack = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraCNHBack", []);
+}
+
+check.startCameraRGFront = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraRGFront", []);
+}
+
+check.startCameraRGBack = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraRGBack", []);
+}
+
+check.startCameraOUTFront = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraOUTFront", []);
+}
+
+check.startCameraOUTBack = function (successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraOUTBack", []);
+}
+			
+module.exports = check;
