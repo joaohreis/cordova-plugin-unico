@@ -4,4 +4,8 @@ module.exports = {
     greet: function (name, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraDocumento", [name]);
     }
+	
+	startCameraDocumento: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "UnicoCheckModule", "startCameraDocumento");
+    }
 };
