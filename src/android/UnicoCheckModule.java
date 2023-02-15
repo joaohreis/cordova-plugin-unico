@@ -57,10 +57,13 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     public enum CameraMode {
         SMART,
-        DEFAULT,
         LIVENESS,
-        DOCUMENT_FRONT,
-        DOCUMENT_BACK
+        CNH_FRONT,
+        CNH_BACK
+        RG_FRONT,
+        RG_BACK,
+		OUT_FRONT,
+		OUT_BACK
     }
 
     private IAcessoBioBuilder acessoBioBuilder;
@@ -79,54 +82,76 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 	@Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
-        if (action.equals("startCameraDocumento")) {
-
-            String name = data.getString(0);
-            String message = "Start da função realizada";
-            callbackContext.success(message);
+        if (action.equals("startCameraSmart")) {
 			
-			callDocumentFrontCamera();
-
-            return true;
-
+			callSmartCamera();
+			
+        } else if (action.equals("startCameraLiveness")) {
+			
+			callLivenessCamera();
+			
+        } else if (action.equals("startCameraCNHFront")) {
+			
+			callDocumentCNHFrontCamera();
+			
+        } else if (action.equals("startCameraCNHBack")) {
+			
+			callDocumentCNHBackCamera();
+			
+        } else if (action.equals("startCameraRGFront")) {
+			
+			callDocumentRGFrontCamera();
+			
+        } else if (action.equals("startCameraRGBack")) {
+			
+			callDocumentRGBackCamera();
+			
+        } else if (action.equals("startCameraOUTFront")) {
+			
+			callDocumentOUTFrontCamera();
+			
+        } else if (action.equals("startCameraOUTBack")) {
+			
+			callDocumentOUTBackCamera();
+			
         } else {
-            callbackContext.error("TESTE INICIAL FAOLHOU");
-            return false;
+            
+			callbackContext.error("TESTE INICIAL FAOLHOU");
 
         }
     }
-
-    
     
     private void callSmartCamera() {
         this.openCamera(CameraMode.SMART);
     }
-
-    
-    
-    private void callDefaultCamera() {
-        this.openCamera(CameraMode.DEFAULT);
-    }
-
-    
     
     private void callLivenessCamera() {
         this.openCamera(CameraMode.LIVENESS);
     }
-
     
-    
-    private void callDocumentFrontCamera() {
-        this.openCamera(CameraMode.DOCUMENT_FRONT);
+    private void callDocumentCNHFrontCamera() {
+        this.openCamera(CameraMode.CNH_FRONT);
     }
-
-    
-    
-    private void callDocumentBackCamera() {
-        this.openCamera(CameraMode.DOCUMENT_BACK);
+      
+    private void callDocumentCNHBackCamera() {
+        this.openCamera(CameraMode.CNH_BACK);
     }
-
+	
+	private void callDocumentRGFrontCamera() {
+        this.openCamera(CameraMode.RG_FRONT);
+    }
     
+    private void callDocumentRGBackCamera() {
+        this.openCamera(CameraMode.RG_BACK);
+    }
+	
+	private void callDocumentOUTFrontCamera() {
+        this.openCamera(CameraMode.OUT_FRONT);
+    }
+    
+    private void callDocumentOUTBackCamera() {
+        this.openCamera(CameraMode.OUT_BACK);
+    }
     
     private void build(boolean hasSmart) {
         acessoBioBuilder = new AcessoBio(cordova.getActivity(), UnicoCheckModule.this);
@@ -172,19 +197,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                                 Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else if (mode == CameraMode.DEFAULT) {
-                        build(false);
-                        unicoCheckCamera.prepareCamera(unicoConfigDefault, new CameraListener() {
-                            @Override
-                            public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
-                                cameraOpener.open(UnicoCheckModule.this);
-                            }
-
-                            @Override
-                            public void onCameraFailed(String message) {
-                                Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
-                            }
-                        });
                     } else if (mode == CameraMode.LIVENESS) {
                         build(false);
                         unicoCheckCamera.prepareCamera(unicoConfigLiveness, new CameraListener() {
@@ -198,7 +210,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                                 Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else if (mode == CameraMode.DOCUMENT_FRONT) {
+                    } else if (mode == CameraMode.CNH_FRONT) {
                         build(false);
                         unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
                             @Override
@@ -211,12 +223,64 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                                 Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else if (mode == CameraMode.DOCUMENT_BACK){
+                    } else if (mode == CameraMode.CNH_BACK){
                         build(false);
                         unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
                                 cameraOpener.open(DocumentType.CNH_VERSO, UnicoCheckModule.this);
+                            }
+
+                            @Override
+                            public void onCameraFailed(String message) {
+                                Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else if (mode == CameraMode.RG_FRONT) {
+                        build(false);
+                        unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
+                            @Override
+                            public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
+                                cameraOpener.open(DocumentType.RG_FRENTE, UnicoCheckModule.this);
+                            }
+
+                            @Override
+                            public void onCameraFailed(String message) {
+                                Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else if (mode == CameraMode.RG_BACK){
+                        build(false);
+                        unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
+                            @Override
+                            public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
+                                cameraOpener.open(DocumentType.RG_VERSO, UnicoCheckModule.this);
+                            }
+
+                            @Override
+                            public void onCameraFailed(String message) {
+                                Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else if (mode == CameraMode.OUT_FRONT) {
+                        build(false);
+                        unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
+                            @Override
+                            public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
+                                cameraOpener.open(DocumentType.OTHERS("Frente"), UnicoCheckModule.this);
+                            }
+
+                            @Override
+                            public void onCameraFailed(String message) {
+                                Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else if (mode == CameraMode.OUT_BACK){
+                        build(false);
+                        unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
+                            @Override
+                            public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
+                                cameraOpener.open(DocumentType.OTHERS("Verso"), UnicoCheckModule.this);
                             }
 
                             @Override
@@ -295,6 +359,13 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         // sendEvent(reactContext, "onSuccess", resultCamera.getEncrypted()); //JWT
         // sendEvent(reactContext, "onSuccess", "Documento capturado com sucesso");
 		//callbackContext.sendPluginResult(result.getBase64());
+		
+		HashMap status = new HashMap();
+        status.put("data64",result.getBase64());
+
+        JSONObject obj = new JSONObject(status);
+        PluginResult result = new PluginResult(PluginResult.Status.OK, obj);
+        callbackContext.sendPluginResult(result);
     }
 
     @Override
