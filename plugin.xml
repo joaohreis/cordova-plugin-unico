@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.example.sdk"
+        id="com.example.unicocheckmodule"
         version="0.7.0">
 
   <name>Hello</name>
@@ -11,8 +11,8 @@
 
   <asset src="www/sdk.js" target="js/sdk.js"/>
 
-  <js-module src="www/sdk.js" name="sdk">
-    <clobbers target="sdk" />
+  <js-module src="www/sdk.js" name="unicocheckmodule">
+    <clobbers target="unicocheckmodule" />
   </js-module>
 
   <platform name="android">
