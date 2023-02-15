@@ -360,10 +360,10 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         // sendEvent(reactContext, "onSuccess", "Documento capturado com sucesso");
 		//callbackContext.sendPluginResult(result.getBase64());
 		
-		HashMap status = new HashMap();
-        status.put("data64",result.getBase64());
+		HashMap status_doc = new HashMap();
+        status_doc.put("data64",result.getBase64());
 
-        JSONObject obj = new JSONObject(status);
+        JSONObject obj = new JSONObject(status_doc);
         PluginResult result = new PluginResult(PluginResult.Status.OK, obj);
         callbackContext.sendPluginResult(result);
     }
