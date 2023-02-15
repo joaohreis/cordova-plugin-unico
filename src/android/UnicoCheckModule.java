@@ -84,42 +84,49 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         if (action.equals("startCameraSmart")) {
 			
 			callSmartCamera();
+			return true;
 			
         } else if (action.equals("startCameraLiveness")) {
 			
 			callLivenessCamera();
+			return true;
 			
         } else if (action.equals("startCameraCNHFront")) {
 			
 			callDocumentCNHFrontCamera();
+			return true;
 			
         } else if (action.equals("startCameraCNHBack")) {
 			
 			callDocumentCNHBackCamera();
+			return true;
 			
         } else if (action.equals("startCameraRGFront")) {
 			
 			callDocumentRGFrontCamera();
+			return true;
 			
         } else if (action.equals("startCameraRGBack")) {
 			
 			callDocumentRGBackCamera();
+			return true;
 			
         } else if (action.equals("startCameraOUTFront")) {
 			
 			callDocumentOUTFrontCamera();
+			return true;
 			
         } else if (action.equals("startCameraOUTBack")) {
 			
 			callDocumentOUTBackCamera();
+			return true;
 			
         } else {
             
 			callbackContext.error("TESTE INICIAL FALHOU");
 			return false;
         }
-		
-		return true;
+	
     }
     
     private void callSmartCamera() {
