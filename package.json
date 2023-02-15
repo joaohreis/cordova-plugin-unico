@@ -1,30 +1,28 @@
 {
-  "name": "cordova-plugin-hello",
-  "version": "0.1.0",
-  "description": "A sample for a new cordova plugin",
+  "name": "cordova-plugin-unico",
+  "version": "1.0.0",
+  "description": "Bene com SDK Unico",
   "cordova": {
-    "id": "cordova-plugin-hello",
+    "id": "cordova-plugin-unico",
     "platforms": [
       "android",
-      "ios",
-      "wp7"
+      "ios"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/don/cordova-plugin-hello.git"
+    "url": "git+https://github.com/joaohreis/cordova-plugin-unico.git"
   },
   "keywords": [
     "cordova",
     "plugin",
-    "hello",
     "ecosystem:cordova",
     "cordova-android"
   ],
-  "author": "Don Coleman",
-  "license": "Apache-2",
+  "author": "Bene",
+  "license": "Comercial",
   "bugs": {
-    "url": "https://github.com/don/cordova-plugin-hello/issues"
+    "url": "https://github.com/joaohreis/cordova-plugin-unico/issues"
   },
-  "homepage": "https://github.com/don/cordova-plugin-hello#readme"
+  "homepage": "https://github.com/joaohreis/cordova-plugin-unico#readme"
 }

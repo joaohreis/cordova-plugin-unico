@@ -25,7 +25,7 @@
 
     <source-file src="src/android/Hello.java" target-dir="src/com/example/plugin/"/>
   </platform>
-
+<!--
   <platform name="ios">
     
     <config-file target="config.xml" parent="/widget">
@@ -41,5 +41,5 @@
   <platform name="wp7">
     <source-file src="src/wp7/Hello.cs"/>
   </platform>
-
+-->
 </plugin>
