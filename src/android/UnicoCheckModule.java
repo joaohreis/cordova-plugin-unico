@@ -115,9 +115,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 			
         } else {
             
-			callbackContext.error("TESTE INICIAL FAOLHOU");
-
+			callbackContext.error("TESTE INICIAL FALHOU");
+			return false;
         }
+		
+		return true;
     }
     
     private void callSmartCamera() {
