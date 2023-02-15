@@ -7,36 +7,36 @@ public class UnicoConfigDefault implements AcessoBioConfigDataSource {
     @NonNull
     @Override
     public String getProjectNumber() {
-        return "";
+        return "480761954839809349276448";
     }
     
     @NonNull
     @Override
     public String getProjectId() {
-        return "";
+        return "Bene.com.vc";
     }
     
     @NonNull
     @Override
     public String getMobileSdkAppId() {
-        return "";
+        return "1:320230:android";
     }
     
     @NonNull
     @Override
     public String getBundleIdentifier() {
-        return "";
+        return "vc.com.bene.app";
     }
     
     @NonNull
     @Override
     public String getHostInfo() {
-        return "";
+        return "nRMqSJJeWMZ0K4n9Dxs/Zhb5RslAxes+pmH0gJgmVtZImMYBRmw3bx3E0ehCDJnY";
     }
     
     @NonNull
     @Override
     public String getHostKey() {
-        return "";
+        return "r930Imj0FlHBf/Y8DGRIIYIxhU5SYVm9+nG+kgCNmKGmwmyWhRVuI9vbBHnf6Jfm";
     }
 }

@@ -47,7 +47,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     //private static ReactApplicationContext reactContext;
     private static Logger logger = Logger.getLogger(UnicoCheckModule.class.getName());
     private static UnicoConfigDefault unicoConfigDefault = new UnicoConfigDefault();
-    private static UnicoConfigLiveness unicoConfigLiveness  = new UnicoConfigLiveness();
     private static UnicoTheme unicoTheme  = new UnicoTheme();
 	private CallbackContext callbackContext;
 
@@ -199,7 +198,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                         });
                     } else if (mode == CameraMode.LIVENESS) {
                         build(false);
-                        unicoCheckCamera.prepareCamera(unicoConfigLiveness, new CameraListener() {
+                        unicoCheckCamera.prepareCamera(unicoConfigDefault, new CameraListener() {
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);

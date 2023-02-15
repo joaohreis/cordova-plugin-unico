@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         id="com.unico.check"
-        version="0.7.3">
+        version="0.7.4">
 
   <name>Unico Check</name>
-
-  <engines>
-    <engine name="cordova" version=">=3.4.0"/>
-  </engines>
 
   <asset src="www/check.js" target="js/check.js"/>
 
@@ -23,10 +19,8 @@
       </feature>
     </config-file>
 
-    <!--<source-file src="src/android/Hello.java" target-dir="src/com/unico/plugin/"/>-->
 	<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
     <source-file src="src/android/UnicoCheckModule.java" target-dir="src/com/unico/plugin/" />
-    <source-file src="src/android/UnicoConfigLiveness.java" target-dir="src/com/unico/plugin/" />
 	<source-file src="src/android/UnicoConfigDefault.java" target-dir="src/com/unico/plugin/" />
 	<source-file src="src/android/UnicoTheme.java" target-dir="src/com/unico/plugin/" />
   </platform>
