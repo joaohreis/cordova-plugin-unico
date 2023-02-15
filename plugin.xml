@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.unico.sdk"
+        id="com.example.sdk"
         version="0.7.0">
 
-  <name>UNICO SDK</name>
+  <name>Hello</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
@@ -19,15 +19,15 @@
 
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="UnicoCheckModule">
-        <param name="android-package" value="com.unico.plugin.UnicoCheckModule"/>
+        <param name="android-package" value="com.example.plugin.UnicoCheckModule"/>
       </feature>
     </config-file>
 
 	<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
-    <source-file src="src/android/UnicoCheckModule.java" target-dir="src/com/unico/plugin/"/>
-    <source-file src="src/android/UnicoConfigLiveness.java" target-dir="src/com/unico/plugin/" />
-	<source-file src="src/android/UnicoConfigDefault.java" target-dir="src/com/unico/plugin/" />
-	<source-file src="src/android/UnicoTheme.java" target-dir="src/com/unico/plugin/" />
+    <source-file src="src/android/UnicoCheckModule.java" target-dir="src/com/example/plugin/" />
+    <source-file src="src/android/UnicoConfigLiveness.java" target-dir="src/com/example/plugin/" />
+	<source-file src="src/android/UnicoConfigDefault.java" target-dir="src/com/example/plugin/" />
+	<source-file src="src/android/UnicoTheme.java" target-dir="src/com/example/plugin/" />
 	
   </platform>
 <!--

@@ -1,4 +1,4 @@
-package com.unico.plugin;
+package com.example.plugin;
 
 import com.acesso.acessobio_android.onboarding.AcessoBioConfigDataSource;
 import androidx.annotation.NonNull;
