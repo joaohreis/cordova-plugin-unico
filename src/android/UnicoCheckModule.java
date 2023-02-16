@@ -50,7 +50,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private static UnicoTheme unicoTheme  = new UnicoTheme();
 	public CallbackContext callbackContext;
 
-    protected final static String[] permissions = { Manifest.permission.CAMERA };
+    private static final String [] permissions = {
+		Manifest.permission.CAMERA
+	};
 
     protected static final int REQUEST_CAMERA_PERMISSION = 1;
 
@@ -92,6 +94,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
 		this.callbackContext = callbackContext;
+		
+		if (!cordova.hasPermission(permissions[0])) 
+		{
+			cordova.requestPermissions(this, 0, permissions);
+		}
 		
 		callbackContext.success("inicio do execute");
 		
@@ -184,7 +191,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     
     private void openCamera(CameraMode mode) {
-        if (hasPermission()) {
+        if (cordova.hasPermission(permissions[0])) {
 			Toast.makeText(cordova.getActivity(), "antes do run", Toast.LENGTH_LONG).show();
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -324,18 +331,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         }else{
 			Toast.makeText(cordova.getActivity(), "sem permissão", Toast.LENGTH_LONG).show();
 		}
-    }
-
-    
-    public boolean hasPermission() {
-        for(String p : permissions)
-        {
-            if(!PermissionHelper.hasPermission(this, p))
-            {
-                return false;
-            }
-        }
-        return true;
     }
 
     private void requestPermission(int requestCode) {
