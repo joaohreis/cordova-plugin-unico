@@ -7,7 +7,7 @@ public class UnicoConfigDefault implements AcessoBioConfigDataSource {
     @NonNull
     @Override
     public String getProjectNumber() {
-        return "48076195483980934927644800000000000";
+        return "480761954839809349276448";
     }
     
     @NonNull

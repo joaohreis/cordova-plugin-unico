@@ -6,71 +6,71 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBackground() {
-        return null;
+        return "#808080";
     }
 
     @Override
     public Object getColorBoxMessage() {
-        return null;
+        return "#FFFFFF";
     }
 
     @Override
     public Object getColorTextMessage() {
-        return null;
+        return "#000000";
     }
 
     @Override
     public Object getColorBackgroundPopupError() {
-        return null;
+        return "#0000FF";
     }
 
     @Override
     public Object getColorTextPopupError() {
-        return null;
+        return "#000000";
     }
 
     @Override
     public Object getColorBackgroundButtonPopupError() {
-        return null;
+        return "#0000FF";
     }
 
     @Override
     public Object getColorTextButtonPopupError() {
-        return null;
+        return "#000000";
     }
 
     @Override
     public Object getColorBackgroundTakePictureButton() {
-        return null;
+        return "#0000FF";
     }
 
     @Override
     public Object getColorIconTakePictureButton() {
-        return null;
+        return "#000000";
     }
 
     @Override
     public Object getColorBackgroundBottomDocument() {
-        return null;
+        return "#0000FF";
     }
 
     @Override
     public Object getColorTextBottomDocument() {
-        return null;
+        return "#000000";
     }
 
     @Override
     public Object getColorSilhouetteSuccess() {
-        return null;
+        return "#00FF00";
     }
 
     @Override
     public Object getColorSilhouetteError() {
-        return null;
+        return "#FFA500";
     }
 
     @Override
     public Object getColorSilhouetteNeutral() {
-        return null;
+        return "#FFFFFF";
     }
 }
