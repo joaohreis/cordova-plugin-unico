@@ -68,7 +68,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private IAcessoBioBuilder acessoBioBuilder;
     private UnicoCheckCamera unicoCheckCamera;
 	
-    private void sendSucess(status) {
+    private void sendSucess(String status) {
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
@@ -78,7 +78,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     }
 	
-	private void sendError(status) {
+	private void sendError(String status) {
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
