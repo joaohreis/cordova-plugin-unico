@@ -93,6 +93,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
 		this.callbackContext = callbackContext;
 		
+		callbackContext.success("inicio do execute");
+		
         if (action.equals("startCameraSmart")) {
 			
 			callSmartCamera();
