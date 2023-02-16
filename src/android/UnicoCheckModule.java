@@ -334,19 +334,19 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onSuccessSelfie(ResultCamera resultCamera) {
-        //sendEvent(reactContext, "onSuccess", resultCamera.getBase64()); //base64
-        // sendEvent(reactContext, "onSuccess", resultCamera.getEncrypted()); //JWT
+    public void onSuccessSelfie(ResultCamera result) {
+        //sendEvent(reactContext, "onSuccess", result.getBase64()); //base64
+        // sendEvent(reactContext, "onSuccess", result.getEncrypted()); //JWT
         // sendEvent(reactContext, "onSuccess", "Selfie capturada com sucesso");
-		//callbackContext.sendPluginResult(resultCamera.getBase64());
+		//callbackContext.sendPluginResult(result.getBase64());
 		
 		HashMap status = new HashMap();
-        status.put("data64",resultCamera.getBase64());
-		status.put("data64",resultCamera.getEncrypted());
+        status.put("data64",result.getBase64());
+		status.put("data64",result.getEncrypted());
 
         JSONObject obj = new JSONObject(status);
-        PluginResult result = new PluginResult(PluginResult.Status.OK, obj);
-        callbackContext.sendPluginResult(result);
+        PluginResult res = new PluginResult(PluginResult.Status.OK, obj);
+        callbackContext.sendPluginResult(res);
     }
 
     @Override
