@@ -302,28 +302,28 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onErrorAcessoBio(ErrorBio errorBio) {
+    public void onErrorAcessoBio(ErrorBio errorBio) throws JSONException {
         JSONObject obj = new JSONObject();
 		obj.put("5", errorBio.getDescription());
 		sendError(obj);
     }
 
     @Override
-    public void onUserClosedCameraManually() {
+    public void onUserClosedCameraManually() throws JSONException {
 		JSONObject obj = new JSONObject();
 		obj.put("4", "Usuário fechou a câmera manualmente");
 		sendError(obj);
     }
 
     @Override
-    public void onSystemClosedCameraTimeoutSession() {
+    public void onSystemClosedCameraTimeoutSession() throws JSONException {
 		JSONObject obj = new JSONObject();
 		obj.put("3", "Timeout de sessão excedido");
 		sendError(obj);
     }
 
     @Override
-    public void onSystemChangedTypeCameraTimeoutFaceInference() {
+    public void onSystemChangedTypeCameraTimeoutFaceInference() throws JSONException {
         JSONObject obj = new JSONObject();
 		obj.put("2", "Timeout de inferencia inteligente de face excedido.");
 		sendError(obj);
@@ -346,7 +346,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onErrorSelfie(ErrorBio errorBio) {
+    public void onErrorSelfie(ErrorBio errorBio) throws JSONException {
 		JSONObject obj = new JSONObject();
 		obj.put("1", errorBio.getDescription());
 		sendError(obj);
@@ -369,7 +369,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onErrorDocument(String s) {
+    public void onErrorDocument(String s) throws JSONException {
         JSONObject obj = new JSONObject();
 		obj.put("0", s);
 		sendError(obj);
