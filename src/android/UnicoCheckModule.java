@@ -100,8 +100,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 			cordova.requestPermissions(this, 0, permissions);
 		}
 		
-		callbackContext.success("inicio do execute");
-		
         if (action.equals("startCameraSmart")) {
 			
 			callSmartCamera();
@@ -145,8 +143,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         } else {
             
 			callbackContext.error("opcao invalida");
-			PluginResult r = new PluginResult(PluginResult.Status.ERROR);
-			callbackContext.sendPluginResult(r);
 			return false;
         }
 	
@@ -192,12 +188,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     
     private void openCamera(CameraMode mode) {
         if (cordova.hasPermission(permissions[0])) {
-			Toast.makeText(cordova.getActivity(), "antes do run", Toast.LENGTH_LONG).show();
+			//Toast.makeText(cordova.getActivity(), "antes do run", Toast.LENGTH_LONG).show();
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 					
-					Toast.makeText(cordova.getActivity(), "dentro do run", Toast.LENGTH_LONG).show();
+					//Toast.makeText(cordova.getActivity(), "dentro do run", Toast.LENGTH_LONG).show();
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
@@ -237,7 +233,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
-								Toast.makeText(cordova.getActivity(), "dentro da funcao do liveness", Toast.LENGTH_LONG).show();
                             }
 
                             @Override
@@ -329,7 +324,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
             });
 
         }else{
-			Toast.makeText(cordova.getActivity(), "sem permissão", Toast.LENGTH_LONG).show();
+			Toast.makeText(cordova.getActivity(), "É necessário dar acesso a câmera para fazer a captura das imagens.", Toast.LENGTH_LONG).show();
 		}
     }
 
