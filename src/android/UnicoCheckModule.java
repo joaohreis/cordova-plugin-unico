@@ -185,12 +185,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     
     private void openCamera(CameraMode mode) {
         if (hasPermission()) {
-			callbackContext.success("antes de run");
+			Toast.makeText(cordova.getActivity(), "antes do run", Toast.LENGTH_LONG).show();
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 					
-					
+					Toast.makeText(cordova.getActivity(), "dentro do run", Toast.LENGTH_LONG).show();
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
@@ -230,6 +230,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
+								Toast.makeText(cordova.getActivity(), "dentro da funcao do liveness", Toast.LENGTH_LONG).show();
                             }
 
                             @Override
@@ -321,7 +322,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
             });
 
         }else{
-			callbackContext.error("sem permissão");
+			Toast.makeText(cordova.getActivity(), "sem permissão", Toast.LENGTH_LONG).show();
 		}
     }
 
