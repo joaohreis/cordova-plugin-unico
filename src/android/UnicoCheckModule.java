@@ -80,11 +80,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     }
 	
-	private void sendError(JSONObject params) {
+	private void sendError(String status) {
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-				callbackContext.error(params.toString());
+                callbackContext.error(status);
             }
         });
 
@@ -141,10 +141,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 			return true;
 			
         } else {
-			
-            JSONObject obj = new JSONObject();
-            obj.put("4", "Opcao invalida");
-			sendError(obj);
+            
+			sendError("4 | " + "Opcao invalida");
 			return false;
         }
 	
@@ -302,31 +300,23 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onErrorAcessoBio(ErrorBio errorBio) throws JSONException {
-        JSONObject obj = new JSONObject();
-		obj.put("5", errorBio.getDescription());
-		sendError(obj);
+    public void onErrorAcessoBio(ErrorBio errorBio) {
+        sendError("5 | " + errorBio.getDescription());
     }
 
     @Override
-    public void onUserClosedCameraManually() throws JSONException {
-		JSONObject obj = new JSONObject();
-		obj.put("4", "Usuário fechou a câmera manualmente");
-		sendError(obj);
+    public void onUserClosedCameraManually() {
+        sendError("4 | " + "Usuário fechou a câmera manualmente");
     }
 
     @Override
-    public void onSystemClosedCameraTimeoutSession() throws JSONException {
-		JSONObject obj = new JSONObject();
-		obj.put("3", "Timeout de sessão excedido");
-		sendError(obj);
+    public void onSystemClosedCameraTimeoutSession() {
+        sendError("3 | " + "Timeout de sessão excedido");
     }
 
     @Override
-    public void onSystemChangedTypeCameraTimeoutFaceInference() throws JSONException {
-        JSONObject obj = new JSONObject();
-		obj.put("2", "Timeout de inferencia inteligente de face excedido.");
-		sendError(obj);
+    public void onSystemChangedTypeCameraTimeoutFaceInference() {
+        sendError("2 | " + "Timeout de inferencia inteligente de face excedido.");
     }
 
     @Override
@@ -346,10 +336,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onErrorSelfie(ErrorBio errorBio) throws JSONException {
-		JSONObject obj = new JSONObject();
-		obj.put("1", errorBio.getDescription());
-		sendError(obj);
+    public void onErrorSelfie(ErrorBio errorBio) {
+        sendError("1 | " + errorBio.getDescription());
     }
 
     @Override
@@ -369,11 +357,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
 
     @Override
-    public void onErrorDocument(String s) throws JSONException {
-        JSONObject obj = new JSONObject();
-		obj.put("0", s);
-		sendError(obj);
-		
+    public void onErrorDocument(String s) {
+        sendError("0 | " + s);
     }
 
 
