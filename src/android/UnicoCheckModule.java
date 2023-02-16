@@ -185,12 +185,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     
     private void openCamera(CameraMode mode) {
         if (hasPermission()) {
-
+			callbackContext.success("antes de run");
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 					
-					callbackContext.success("openCamera");
+					
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
@@ -320,7 +320,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
             });
 
-        }
+        }else{
+			callbackContext.error("sem permissão");
+		}
     }
 
     
