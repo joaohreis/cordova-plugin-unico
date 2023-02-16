@@ -142,9 +142,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 			
         } else {
             
-			JSONObject data = new JSONObject();
-			data.put("7", "opcao invalida");
-			callbackContext.error(data);
+			JSONObject msg = new JSONObject();
+			msg.put("7", "opcao invalida");
+			callbackContext.error(msg);
 			return false;
         }
 	
