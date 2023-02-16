@@ -48,7 +48,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private static Logger logger = Logger.getLogger(UnicoCheckModule.class.getName());
     private static UnicoConfigDefault unicoConfigDefault = new UnicoConfigDefault();
     private static UnicoTheme unicoTheme  = new UnicoTheme();
-	private CallbackContext callbackContext;
+	public CallbackContext callbackContext;
 
     protected final static String[] permissions = { Manifest.permission.CAMERA };
 
@@ -81,6 +81,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 	@Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
+		this.callbackContext = callbackContext;
+		
         if (action.equals("startCameraSmart")) {
 			
 			callSmartCamera();
@@ -123,7 +125,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 			
         } else {
             
-			callbackContext.error("TESTE INICIAL FALHOU");
+			callbackContext.error("opcao invalida");
+			PluginResult r = new PluginResult(PluginResult.Status.ERROR);
+			callbackContext.sendPluginResult(r);
 			return false;
         }
 	
@@ -323,22 +327,22 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     @Override
     public void onErrorAcessoBio(ErrorBio errorBio) {
-        callbackContext.error(errorBio.getDescription());
+        this.callbackContext.error(errorBio.getDescription());
     }
 
     @Override
     public void onUserClosedCameraManually() {
-        callbackContext.error("Usuário fechou a câmera manualmente");
+        this.callbackContext.error("Usuário fechou a câmera manualmente");
     }
 
     @Override
     public void onSystemClosedCameraTimeoutSession() {
-        callbackContext.error("Timeout de sessão excedido");
+        this.callbackContext.error("Timeout de sessão excedido");
     }
 
     @Override
     public void onSystemChangedTypeCameraTimeoutFaceInference() {
-        callbackContext.error("Timeout de inferencia inteligente de face excedido.");
+        this.callbackContext.error("Timeout de inferencia inteligente de face excedido.");
     }
 
     @Override
@@ -353,12 +357,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
         JSONObject obj = new JSONObject(status);
         PluginResult result = new PluginResult(PluginResult.Status.OK, obj);
-        callbackContext.sendPluginResult(result);
+        this.callbackContext.sendPluginResult(result);
     }
 
     @Override
     public void onErrorSelfie(ErrorBio errorBio) {
-        callbackContext.error(errorBio.getDescription());
+        this.callbackContext.error(errorBio.getDescription());
     }
 
     @Override
@@ -373,12 +377,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
         JSONObject obj = new JSONObject(status_doc);
         PluginResult res = new PluginResult(PluginResult.Status.OK, obj);
-        callbackContext.sendPluginResult(res);
+        this.callbackContext.sendPluginResult(res);
     }
 
     @Override
     public void onErrorDocument(String s) {
-        callbackContext.error(s);
+        this.callbackContext.error(s);
     }
 
 
