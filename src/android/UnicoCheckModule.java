@@ -143,7 +143,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
         } else {
             
 			JSONObject data = new JSONObject();
-			data.put(7, "opcao invalida");
+			data.put("7", "opcao invalida");
 			callbackContext.error(data);
 			return false;
         }
@@ -317,7 +317,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     @Override
     public void onErrorAcessoBio(ErrorBio errorBio) {
 		JSONObject data = new JSONObject();
-		data.put(6, errorBio.getDescription());
+		data.put("6", errorBio.getDescription());
 		callbackContext.error(data);
         //sendError(errorBio.getDescription());
     }
@@ -325,7 +325,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     @Override
     public void onUserClosedCameraManually() {
 		JSONObject data = new JSONObject();
-		data.put(5, "Usuário fechou a câmera manualmente");
+		data.put("5", "Usuário fechou a câmera manualmente");
 		callbackContext.error(data);
         //sendError("Usuário fechou a câmera manualmente");
     }
@@ -333,7 +333,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     @Override
     public void onSystemClosedCameraTimeoutSession() {
 		JSONObject data = new JSONObject();
-		data.put(4, "Timeout de sessão excedido");
+		data.put("4", "Timeout de sessão excedido");
 		callbackContext.error(data);
         //sendError("Timeout de sessão excedido");
     }
@@ -341,7 +341,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     @Override
     public void onSystemChangedTypeCameraTimeoutFaceInference() {
 		JSONObject data = new JSONObject();
-		data.put(3, "Timeout de inferencia inteligente de face excedido.");
+		data.put("3", "Timeout de inferencia inteligente de face excedido.");
 		callbackContext.error(data);
         //sendError("Timeout de inferencia inteligente de face excedido.");
     }
@@ -365,7 +365,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     @Override
     public void onErrorSelfie(ErrorBio errorBio) {
 		JSONObject data = new JSONObject();
-		data.put(1, errorBio.getDescription());
+		data.put("1", errorBio.getDescription());
 		callbackContext.error(data);
         //sendError(errorBio.getDescription());
     }
@@ -389,7 +389,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     @Override
     public void onErrorDocument(String s) {
 		JSONObject data = new JSONObject();
-		data.put(0, s);
+		data.put("0", s);
 		callbackContext.error(data);
         //sendError(s);
     }
