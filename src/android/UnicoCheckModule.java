@@ -272,25 +272,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                                 Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else if (mode == CameraMode.OUT_FRONT) {
+                    } else if (mode == CameraMode.OUT_FRONT || mode == CameraMode.OUT_BACK) {
                         build(false);
                         unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
-                                //cameraOpener.open(DocumentType.None, UnicoCheckModule.this);
-                            }
-
-                            @Override
-                            public void onCameraFailed(String message) {
-                                Toast.makeText(cordova.getActivity(), message, Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    } else if (mode == CameraMode.OUT_BACK){
-                        build(false);
-                        unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
-                            @Override
-                            public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
-                                //cameraOpener.open(DocumentType.None, UnicoCheckModule.this);
+                                cameraOpener.open(DocumentType.None, UnicoCheckModule.this);
                             }
 
                             @Override
