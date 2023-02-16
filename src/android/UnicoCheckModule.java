@@ -74,7 +74,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-                callbackContext.success(callbackContext);
+                callbackContext.success();
             }
         });
 
@@ -363,7 +363,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 		
 		HashMap status_doc = new HashMap();
         status_doc.put("data64",result.getBase64());
-		status_doc.put("jwt",resultCamera.getEncrypted());
+		status_doc.put("jwt",result.getEncrypted());
 
         JSONObject obj = new JSONObject(status_doc);
         PluginResult res = new PluginResult(PluginResult.Status.OK, obj);
