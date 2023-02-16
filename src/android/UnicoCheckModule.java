@@ -70,11 +70,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private IAcessoBioBuilder acessoBioBuilder;
     private UnicoCheckCamera unicoCheckCamera;
 	
-    private void sendSucess(JSONArray data) {
+    private void sendSucess() {
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-                callbackContext.success(data);
+                callbackContext.success(callbackContext);
             }
         });
 
@@ -346,7 +346,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
         JSONObject obj = new JSONObject(status);
         PluginResult result = new PluginResult(PluginResult.Status.OK, obj);
-        sendSucess(callbackContext.sendPluginResult(result));
+        callbackContext.sendPluginResult(result);
     }
 
     @Override
@@ -367,7 +367,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
         JSONObject obj = new JSONObject(status_doc);
         PluginResult res = new PluginResult(PluginResult.Status.OK, obj);
-        sendSucess(callbackContext.sendPluginResult(res));
+        callbackContext.sendPluginResult(res);
     }
 
     @Override
