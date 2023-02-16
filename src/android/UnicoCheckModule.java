@@ -80,7 +80,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     }
 	
-	private void sendError(int code, String message) {
+	private void sendError(int code, String message) throws JSONException {
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
