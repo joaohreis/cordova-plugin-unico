@@ -177,6 +177,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+					
+					this.callbackContext.success("openCamera");
+					
                     if (mode == CameraMode.SMART) {
                         build(true);
                         unicoCheckCamera.prepareCamera(unicoConfigDefault, new CameraListener() {
