@@ -70,11 +70,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private IAcessoBioBuilder acessoBioBuilder;
     private UnicoCheckCamera unicoCheckCamera;
 	
-    private void sendSucess(String status) {
+    private void sendSucess(JSONArray data) {
 
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-                callbackContext.success(status);
+                callbackContext.success(data);
             }
         });
 
@@ -188,35 +188,15 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     
     private void openCamera(CameraMode mode) {
         if (cordova.hasPermission(permissions[0])) {
-			//Toast.makeText(cordova.getActivity(), "antes do run", Toast.LENGTH_LONG).show();
+			
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 					
-					//Toast.makeText(cordova.getActivity(), "dentro do run", Toast.LENGTH_LONG).show();
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
                         unicoCheckCamera.prepareCamera(unicoConfigDefault, new CameraListener() {
-
-                        /*
-                           Para gerar o arquivo JSON é necessário criar uma API key. Siga os passos abaixo:
-                            - Acesse o portal do cliente da unico com suas credenciais;
-                            - Navegue em Configurações > Integração > API Key;
-                            - Crie ou edite uma nova API Key;
-                            - Marque o campo "Utiliza liveness ativo" como SIM caso queira habilitar a câmera Prova de Vidas ou NÃO caso queira utilizar a Câmera Normal ou Inteligente;
-                            - Marque o campo "Utiliza autenticação segura na SDK" como SIM;
-                            - Expanda a seção SDK iOS, adicione o nome de sua aplicação iOS e o Bundle ID;
-                            - Salve as alterações.
-                            - Neste momento, retornará para a página de API Key e ao lado da API Key desejada, pressione o botão de download do Bundle;
-                            - Selecione a opção iOS;
-                            - Clique em "Gerar";
-                            Atenção: Uma nova aba será aberta contendo informações do projeto em formato JSON.
-                            Caso a nova aba não abra, por favor, verifique se o seu navegador está bloqueando os popups.
-                            - Salve o conteúdo desta nova aba em um novo arquivo JSON;
-                            - Adicione o arquivo salvo na pasta assets do seu projeto android"
-                        */
-
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
@@ -362,10 +342,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 		
 		HashMap status = new HashMap();
         status.put("data64",resultCamera.getBase64());
+		status.put("data64",resultCamera.getEncrypted());
 
         JSONObject obj = new JSONObject(status);
         PluginResult result = new PluginResult(PluginResult.Status.OK, obj);
-        this.callbackContext.sendPluginResult(result);
+        sendSucess(result);
     }
 
     @Override
@@ -382,10 +363,11 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 		
 		HashMap status_doc = new HashMap();
         status_doc.put("data64",result.getBase64());
+		status_doc.put("jwt",resultCamera.getEncrypted());
 
         JSONObject obj = new JSONObject(status_doc);
         PluginResult res = new PluginResult(PluginResult.Status.OK, obj);
-        this.callbackContext.sendPluginResult(res);
+        sendSucess(res);
     }
 
     @Override
