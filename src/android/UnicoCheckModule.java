@@ -328,7 +328,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 		
 		HashMap status = new HashMap();
         status.put("data64",result.getBase64());
-		status.put("data64",result.getEncrypted());
+		status.put("jwt",result.getEncrypted());
 
         JSONObject obj = new JSONObject(status);
         PluginResult res = new PluginResult(PluginResult.Status.OK, obj);
