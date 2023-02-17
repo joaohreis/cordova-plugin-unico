@@ -6,7 +6,7 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBackground() {
-        return "#808080";
+        return "#FFFFFF";
     }
 
     @Override
@@ -21,7 +21,7 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBackgroundPopupError() {
-        return "#0000FF";
+        return "#951AD6";
     }
 
     @Override
@@ -31,7 +31,7 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBackgroundButtonPopupError() {
-        return "#0000FF";
+        return "#951AD6";
     }
 
     @Override
@@ -41,17 +41,17 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBackgroundTakePictureButton() {
-        return "#0000FF";
+        return "#951AD6";
     }
 
     @Override
     public Object getColorIconTakePictureButton() {
-        return "#000000";
+        return "#FFFFFF";
     }
 
     @Override
     public Object getColorBackgroundBottomDocument() {
-        return "#0000FF";
+        return "#951AD6";
     }
 
     @Override
@@ -61,12 +61,12 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorSilhouetteSuccess() {
-        return "#00FF00";
+        return "#CECECE";
     }
 
     @Override
     public Object getColorSilhouetteError() {
-        return "#FFA500";
+        return "#FF0000";
     }
 
     @Override
