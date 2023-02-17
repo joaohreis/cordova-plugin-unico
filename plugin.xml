@@ -24,21 +24,30 @@
 	<source-file src="src/android/UnicoConfigDefault.java" target-dir="src/com/unico/plugin/" />
 	<source-file src="src/android/UnicoTheme.java" target-dir="src/com/unico/plugin/" />
   </platform>
-<!--
+
   <platform name="ios">
     
     <config-file target="config.xml" parent="/widget">
-      <feature name="Hello">
-        <param name="ios-package" value="HWPHello" />
+      <feature name="UnicoCheckModule">
+        <param name="ios-package" value="UnicoCheckModule" />
       </feature>
     </config-file>
 
-    <header-file src="src/ios/HWPHello.h" target-dir="HelloPlugin"/>
-    <source-file src="src/ios/HWPHello.m" target-dir="HelloPlugin"/>
+    <header-file src="src/ios/UnicoCheckViewController.h" target-dir="UnicoPlugin"/>
+    <source-file src="src/ios/UnicoCheckViewController.m" target-dir="UnicoPlugin"/>
+	<header-file src="src/ios/UnicoCheckModule.h" target-dir="UnicoPlugin"/>
+    <source-file src="src/ios/UnicoCheckModule.m" target-dir="UnicoPlugin"/>
+	<header-file src="src/ios/UnicoConfig.h" target-dir="UnicoPlugin"/>
+    <source-file src="src/ios/UnicoConfig.m" target-dir="UnicoPlugin"/>
+	
+	<podspec>
+		<config>
+			<source url="https://cdn.cocoapods.org/"/>
+		</config>
+		<pods use-frameworks="true">
+			<pod name="unicocheck-ios" spec="2.3.10"/>
+		</pods>
+	</podspec>
   </platform>
 
-  <platform name="wp7">
-    <source-file src="src/wp7/Hello.cs"/>
-  </platform>
--->
 </plugin>
