@@ -301,7 +301,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 
     @Override
     public void onErrorAcessoBio(ErrorBio errorBio) {
-        sendError("5 | " + errorBio.getDescription());
+        sendError(errorBio.getCode() + " | " + errorBio.getDescription());
     }
 
     @Override
