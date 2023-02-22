@@ -39,6 +39,8 @@
     <source-file src="src/ios/UnicoCheckModule.m" />
 	<header-file src="src/ios/UnicoConfig.h" />
     <source-file src="src/ios/UnicoConfig.m" />
+	<header-file src="src/ios/UnicoTheme.h" />
+	<source-file src="src/ios/UnicoTheme.m" />
 	
 	<podspec>
 		<config>
