@@ -33,12 +33,12 @@
       </feature>
     </config-file>
 
-    <header-file src="src/ios/UnicoCheckViewController.h" target-dir="/com.unico.check/"/>
-    <source-file src="src/ios/UnicoCheckViewController.m" target-dir="/com.unico.check/"/>
-	<header-file src="src/ios/UnicoCheckModule.h" target-dir="/com.unico.check/"/>
-    <source-file src="src/ios/UnicoCheckModule.m" target-dir="/com.unico.check/"/>
-	<header-file src="src/ios/UnicoConfig.h" target-dir="/com.unico.check/"/>
-    <source-file src="src/ios/UnicoConfig.m" target-dir="/com.unico.check/"/>
+    <header-file src="src/ios/UnicoCheckViewController.h" />
+    <source-file src="src/ios/UnicoCheckViewController.m" />
+	<header-file src="src/ios/UnicoCheckModule.h" />
+    <source-file src="src/ios/UnicoCheckModule.m" />
+	<header-file src="src/ios/UnicoConfig.h" />
+    <source-file src="src/ios/UnicoConfig.m" />
 	
 	<podspec>
 		<config>
