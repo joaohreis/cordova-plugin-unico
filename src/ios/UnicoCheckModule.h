@@ -4,6 +4,8 @@
 
 @interface UnicoCheckModule : CDVPlugin
 
+bool hasListeners;
+
 typedef NS_ENUM(NSInteger, CameraMode) {
   DEFAULT,
   SMART,
