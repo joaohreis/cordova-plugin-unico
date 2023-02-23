@@ -10,7 +10,7 @@
 
   CDVPluginResult *pluginResult;
 
-	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
+	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao startcamera"];
 
   //if (command.arguments.count > 3) {
   //  CGFloat x = (CGFloat)[command.arguments[0] floatValue] + self.webView.frame.origin.x;
@@ -21,6 +21,8 @@
 {
   self.UnicoCallbackId = command.callbackId;
   NSLog(@"[objC] callbackId: %@", self.UnicoCallbackId);
+  
+  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao init"];
 
 }
 
