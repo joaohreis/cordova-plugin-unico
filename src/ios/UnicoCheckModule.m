@@ -7,7 +7,7 @@
 @synthesize UnicoCallbackId;
 
 
-- (void)init:(CDVInvokedUrlCommand*)command
+- (void)startCamera:(CDVInvokedUrlCommand*)command
 {
   self.UnicoCallbackId = command.callbackId;
   NSLog(@"[objC] callbackId: %@", self.UnicoCallbackId);
