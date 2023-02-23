@@ -80,7 +80,7 @@
 - (void)callLivenessCamera {
   NSLog(@"callLivenessCamera");
   [unicoCheck setTheme: [UnicoTheme new]];
-  [[unicoCheck build] prepareSelfieCamera:self config: [UnicoConfigLiveness new]];
+  [[unicoCheck build] prepareSelfieCamera:self config: [UnicoConfig new]];
 }
 
 - (void)callDocumentFrontCamera {
