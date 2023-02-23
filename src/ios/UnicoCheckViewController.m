@@ -7,7 +7,7 @@
 #import "UnicoCheckModule.h"
 #import <AcessoBio/AcessoBio-Swift.h>
 #import "UnicoTheme.h"
-#import "UnicoConfig.m"
+#import "UnicoConfig.h"
 
 @interface UnicoCheckViewController ()
 
