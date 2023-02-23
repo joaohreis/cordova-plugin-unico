@@ -4,7 +4,7 @@
 
 @interface UnicoCheckModule : CDVPlugin
 
-bool hasListeners;
+@property (nonatomic) bool hasListeners;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
   DEFAULT,
