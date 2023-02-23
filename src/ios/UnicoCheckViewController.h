@@ -1,9 +1,3 @@
-#import <Cordova/CDV.h>
-#import <Cordova/CDVPlugin.h>
-#import <Cordova/CDVInvokedUrlCommand.h>
-#import <GLKit/GLKit.h>
-
-#import <UIKit/UIKit.h>
 #import <AcessoBio/AcessoBioManager.h>
 #import <AcessoBio/AcessoBioManagerDelegate.h>
 #import "UnicoCheckModule.h"
