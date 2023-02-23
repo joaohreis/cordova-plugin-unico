@@ -8,6 +8,15 @@
 
 @implementation UnicoCheckModule
 
+@synthesize UnicoCallbackId;
+
+
+- (void)init:(CDVInvokedUrlCommand*)command
+{
+  self.UnicoCallbackId = command.callbackId;
+  NSLog(@"[objC] callbackId: %@", self.UnicoCallbackId);
+
+}
 
 - (void)callDefaultCamera {
   [self openCamera:DEFAULT];
@@ -69,7 +78,7 @@
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }  
 }
 
@@ -80,7 +89,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
 
-    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }
 }
 
@@ -91,7 +100,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
 
-    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }
 }
 
@@ -102,7 +111,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 }
 
 - (void)systemClosedCameraTimeoutSession {
@@ -112,7 +121,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 }
 
 - (void)userClosedCameraManually {
@@ -123,7 +132,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }
 }
 

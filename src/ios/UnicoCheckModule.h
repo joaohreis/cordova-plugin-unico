@@ -6,6 +6,9 @@
 
 @property (nonatomic) bool hasListeners;
 
+@property (nonatomic, copy) NSString *UnicoCallbackId;
+- (void)init:(CDVInvokedUrlCommand*)command;
+
 typedef NS_ENUM(NSInteger, CameraMode) {
   DEFAULT,
   SMART,
