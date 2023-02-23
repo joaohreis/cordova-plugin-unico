@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         id="com.unico.check"
-        version="0.8.3">
+        version="0.8.4">
 
   <name>Unico Check</name>
 
@@ -27,16 +27,16 @@
 
   <platform name="ios">
     
-    <config-file target="config.xml" parent="/widget">
+    <config-file target="config.xml" parent="/*">
       <feature name="UnicoCheckModule">
-        <param name="ios-package" value="UnicoCheckModule" />
+        <param name="ios-package" value="UnicoCheckModule" onload="true" />
       </feature>
     </config-file>
 
-    <header-file src="src/ios/UnicoCheckViewController.h" />
-    <source-file src="src/ios/UnicoCheckViewController.m" />
-	<header-file src="src/ios/UnicoCheckModule.h" />
+    <header-file src="src/ios/UnicoCheckModule.h" />
     <source-file src="src/ios/UnicoCheckModule.m" />
+	<header-file src="src/ios/UnicoCheckViewController.h" />
+    <source-file src="src/ios/UnicoCheckViewController.m" />
 	<header-file src="src/ios/UnicoConfig.h" />
     <source-file src="src/ios/UnicoConfig.m" />
 	<header-file src="src/ios/UnicoTheme.h" />
