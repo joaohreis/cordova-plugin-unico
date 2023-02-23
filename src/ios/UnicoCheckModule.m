@@ -61,66 +61,61 @@
     // Remove upstream listeners, stop unnecessary background tasks
 }
 
-- (void)onSucessCamera: (CDVInvokedUrlCommand*)command {
+- (void)onSucessCamera: (NSString *)msg {
   if(self.hasListeners) {
     //[self sendEventWithName:@"onSuccess" body:@{@"objResult": msg}];
 	
-	NSString * msg = [command.arguments objectAtIndex:0];
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
   }  
 }
 
-- (void)onErrorCameraFace: (CDVInvokedUrlCommand*)command {
+- (void)onErrorCameraFace:(NSString *)error {
   if(self.hasListeners) {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	
-	NSString * error = [command.arguments objectAtIndex:0];
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
 
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
   }
 }
 
-- (void)onErrorAcessoBioManager: (CDVInvokedUrlCommand*)command {
+- (void)onErrorAcessoBioManager:(NSString *)error {
   if (self.hasListeners) {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	
-	NSString * error = [command.arguments objectAtIndex:0];
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
 
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
   }
 }
 
-- (void)systemClosedCameraTimeoutFaceInference (CDVInvokedUrlCommand*)command {
+- (void)systemClosedCameraTimeoutFaceInference {
   //[self sendEventWithName:@"onError" body:@{@"objResult": @"Timeout de inferencia inteligente de face excedido."}];
   NSString* msg = [NSString stringWithFormat: @"Timeout de inferencia inteligente de face excedido."];
   CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
 }
 
-- (void)systemClosedCameraTimeoutSession (CDVInvokedUrlCommand*)command {
+- (void)systemClosedCameraTimeoutSession {
   //[self sendEventWithName:@"onError" body:@{@"objResult": @"Tempo de sessão excedido"}];
   NSString* msg = [NSString stringWithFormat: @"Tempo de sessão excedido"];
   CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
 }
 
-- (void)userClosedCameraManually (CDVInvokedUrlCommand*)command {
+- (void)userClosedCameraManually {
   if(self.hasListeners) {
     //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
 	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
@@ -128,7 +123,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
   }
 }
 
