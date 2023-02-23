@@ -22,6 +22,8 @@
   self.UnicoCallbackId = command.callbackId;
   NSLog(@"[objC] callbackId: %@", self.UnicoCallbackId);
   
+  CDVPluginResult *pluginResult;
+  
   pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao init"];
 
 }
