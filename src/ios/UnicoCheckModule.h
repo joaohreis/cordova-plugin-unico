@@ -14,12 +14,19 @@ typedef NS_ENUM(NSInteger, CameraMode) {
   DOCUMENT_BACK
 };
 
-- (void)onSucessCamera: (NSString *)msg;
-- (void)onErrorCameraFace:(NSString *)error;
-- (void)onErrorAcessoBioManager:(NSString *)error;
-- (void)systemClosedCameraTimeoutFaceInference;
-- (void)systemClosedCameraTimeoutSession;
-- (void)userClosedCameraManually;
+//- (void)onSucessCamera: (NSString *)msg;
+//- (void)onErrorCameraFace:(NSString *)error;
+//- (void)onErrorAcessoBioManager:(NSString *)error;
+//- (void)systemClosedCameraTimeoutFaceInference;
+//- (void)systemClosedCameraTimeoutSession;
+//- (void)userClosedCameraManually;
+
+- (void)onSucessCamera: (CDVInvokedUrlCommand*)command;
+- (void)onErrorCameraFace: (CDVInvokedUrlCommand*)command;
+- (void)onErrorAcessoBioManager: (CDVInvokedUrlCommand*)command;
+- (void)systemClosedCameraTimeoutFaceInference (CDVInvokedUrlCommand*)command;
+- (void)systemClosedCameraTimeoutSession (CDVInvokedUrlCommand*)command;
+- (void)userClosedCameraManually (CDVInvokedUrlCommand*)command;
 
 //- (void) greet:(CDVInvokedUrlCommand*)command;
 
