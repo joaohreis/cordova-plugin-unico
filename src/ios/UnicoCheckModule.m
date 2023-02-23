@@ -63,33 +63,67 @@
 
 - (void)onSucessCamera: (NSString *)msg {
   if(hasListeners) {
-    [self sendEventWithName:@"onSuccess" body:@{@"objResult": msg}];
+    //[self sendEventWithName:@"onSuccess" body:@{@"objResult": msg}];
+	
+    CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_OK
+                               messageAsString:msg];
+
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
   }  
 }
 
 - (void)onErrorCameraFace:(NSString *)error {
   if(hasListeners) {
-    [self sendEventWithName:@"onError" body:@{@"objResult": error}];
+    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
+	CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_ERROR
+                               messageAsString:error];
+
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
   }
 }
 
 - (void)onErrorAcessoBioManager:(NSString *)error {
   if (hasListeners) {
-    [self sendEventWithName:@"onError" body:@{@"objResult": error}];
+    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
+	CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_ERROR
+                               messageAsString:error];
+
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
   }
 }
 
 - (void)systemClosedCameraTimeoutFaceInference {
-  [self sendEventWithName:@"onError" body:@{@"objResult": @"Timeout de inferencia inteligente de face excedido."}];
+  //[self sendEventWithName:@"onError" body:@{@"objResult": @"Timeout de inferencia inteligente de face excedido."}];
+  NSString* msg = [NSString stringWithFormat: @"Timeout de inferencia inteligente de face excedido."];
+  CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_ERROR
+                               messageAsString:msg];
+
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
 - (void)systemClosedCameraTimeoutSession {
-  [self sendEventWithName:@"onError" body:@{@"objResult": @"Tempo de sessão excedido"}];
+  //[self sendEventWithName:@"onError" body:@{@"objResult": @"Tempo de sessão excedido"}];
+  NSString* msg = [NSString stringWithFormat: @"Tempo de sessão excedido"];
+  CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_ERROR
+                               messageAsString:msg];
+
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
 - (void)userClosedCameraManually {
   if(hasListeners) {
-    [self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
+    //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
+	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
+	CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_ERROR
+                               messageAsString:msg];
+
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
   }
 }
 
