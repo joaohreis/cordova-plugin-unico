@@ -5,10 +5,10 @@
 
   <name>Unico Check</name>
 
-  <asset src="www/check.js" target="js/check.js"/>
+<!--  <asset src="www/check.js" target="js/check.js"/>-->
 
-  <js-module src="www/check.js" name="check">
-    <clobbers target="check" />
+  <js-module src="www/check.js" name="UnicoCheckModule">
+    <clobbers target="UnicoCheckModule" />
   </js-module>
 
   <platform name="android">
