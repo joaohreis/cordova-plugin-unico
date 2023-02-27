@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         id="com.unico.check"
-        version="0.8.5">
+        version="0.8.6">
 
   <name>Unico Check</name>
 
 <!--  <asset src="www/check.js" target="js/check.js"/>-->
 
-  <js-module src="www/check.js" name="UnicoCheckModule">
-    <clobbers target="UnicoCheckModule" />
-  </js-module>
-
   <platform name="android">
 
-    <config-file target="res/xml/config.xml" parent="/*">
+	<js-module src="www/check.js" name="UnicoCheckModule">
+		<clobbers target="UnicoCheckModule" />
+	</js-module>
+    
+	<config-file target="res/xml/config.xml" parent="/*">
       <feature name="UnicoCheckModule">
         <param name="android-package" value="com.unico.plugin.UnicoCheckModule"/>
       </feature>
@@ -26,10 +26,15 @@
   </platform>
 
   <platform name="ios">
+  
+	<js-module src="www/check.js" name="UnicoCheckModule">
+		<clobbers target="UnicoCheckModule" />
+	</js-module>
     
     <config-file target="config.xml" parent="/*">
       <feature name="UnicoCheckModule">
-        <param name="ios-package" value="UnicoCheckModule" onload="true" />
+        <param name="ios-package" value="UnicoCheckModule" />
+		<param name="onload" value="true" />
       </feature>
     </config-file>
 
