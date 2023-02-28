@@ -26,8 +26,6 @@
   </platform>
 
   <platform name="ios">
-  
-	<plugins-plist key="UnicoCheckModule" string="UnicoCheckModule" />
     
     <config-file target="config.xml" parent="/*">
       <feature name="UnicoCheckModule">
