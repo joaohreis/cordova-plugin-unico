@@ -2,7 +2,13 @@
 #import "UnicoCheckModule.h"
 #import "UnicoCheckViewController.h"
 
+@interface UnicoCheckModule ()
+
+@end
+
 @implementation UnicoCheckModule
+
+@interface CDVCamera ()
 
 @synthesize UnicoCallbackId;
 

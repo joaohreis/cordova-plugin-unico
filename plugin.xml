@@ -7,12 +7,12 @@
 
 <!--  <asset src="www/check.js" target="js/check.js"/>-->
 
-  <platform name="android">
-
 	<js-module src="www/check.js" name="UnicoCheckModule">
 		<clobbers target="UnicoCheckModule" />
 	</js-module>
-    
+
+  <platform name="android">
+
 	<config-file target="res/xml/config.xml" parent="/*">
       <feature name="UnicoCheckModule">
         <param name="android-package" value="com.unico.plugin.UnicoCheckModule"/>
@@ -28,10 +28,6 @@
   <platform name="ios">
   
 	<plugins-plist key="UnicoCheckModule" string="UnicoCheckModule" />
-  
-	<js-module src="www/check.js" name="UnicoCheckModule">
-		<clobbers target="UnicoCheckModule" />
-	</js-module>
     
     <config-file target="config.xml" parent="/*">
       <feature name="UnicoCheckModule">

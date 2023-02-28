@@ -4,6 +4,7 @@
 #import <GLKit/GLKit.h>
 
 @interface UnicoCheckModule : CDVPlugin
+{}
 
 @property (nonatomic) bool hasListeners;
 
