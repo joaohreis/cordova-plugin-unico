@@ -16,8 +16,9 @@
 
 	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao startCameraLiveness"];
 
-  //if (command.arguments.count > 3) {
-  //  CGFloat x = (CGFloat)[command.arguments[0] floatValue] + self.webView.frame.origin.x;
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+  
+  [self callLivenessCamera];
   
 }
 
