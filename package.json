@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-unico",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "Bene com SDK Unico",
   "cordova": {
     "id": "cordova-plugin-unico",
