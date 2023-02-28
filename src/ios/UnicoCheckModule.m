@@ -3,10 +3,12 @@
 #import "UnicoCheckViewController.h"
 
 @interface UnicoCheckModule ()
-	@property NSString* UnicoCallbackId;
+
 @end
 
 @implementation UnicoCheckModule
+
+@synthesize UnicoCallbackId;
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 
