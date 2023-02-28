@@ -6,11 +6,11 @@
 
 @synthesize UnicoCallbackId;
 
-- (void) startCamera:(CDVInvokedUrlCommand*)command {
+- (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 
   CDVPluginResult *pluginResult;
 
-	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao startcamera"];
+	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao startCameraLiveness"];
 
   //if (command.arguments.count > 3) {
   //  CGFloat x = (CGFloat)[command.arguments[0] floatValue] + self.webView.frame.origin.x;

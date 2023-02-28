@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         id="com.unico.check"
-        version="0.8.6">
+        version="0.8.7">
 
   <name>Unico Check</name>
 
@@ -26,6 +26,8 @@
   </platform>
 
   <platform name="ios">
+  
+	<plugins-plist key="UnicoCheckModule" string="UnicoCheckModule" />
   
 	<js-module src="www/check.js" name="UnicoCheckModule">
 		<clobbers target="UnicoCheckModule" />

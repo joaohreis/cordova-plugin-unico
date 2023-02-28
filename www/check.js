@@ -4,46 +4,46 @@ var argscheck = require('cordova/argscheck'),
 
 var PLUGIN_NAME = "UnicoCheckModule";
 
-var check = function() {};
+var UnicoCheckModule = function() {};
 
-check.startCameraSmart = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraSmart = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraSmart", []);
 	console.log("startCameraSmart");
 }
 
-check.startCameraLiveness = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraLiveness = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraLiveness", []);
 	console.log("startCameraLiveness");
 }
 
-check.startCameraCNHFront = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraCNHFront = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraCNHFront", []);
 	console.log("startCameraCNHFront");
 }
 
-check.startCameraCNHBack = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraCNHBack = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraCNHBack", []);
 	console.log("startCameraCNHBack");
 }
 
-check.startCameraRGFront = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraRGFront = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraRGFront", []);
 	console.log("startCameraRGFront");
 }
 
-check.startCameraRGBack = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraRGBack = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraRGBack", []);
 	console.log("startCameraRGBack");
 }
 
-check.startCameraOUTFront = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraOUTFront = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraOUTFront", []);
 	console.log("startCameraOUTFront");
 }
 
-check.startCameraOUTBack = function (successCallback, errorCallback) {
+UnicoCheckModule.startCameraOUTBack = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraOUTBack", []);
 	console.log("startCameraOUTBack");
 }
 			
-module.exports = check;
+module.exports = UnicoCheckModule;

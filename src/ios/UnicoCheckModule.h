@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, CameraMode) {
   DOCUMENT_BACK
 };
 
-- (void)startCamera: (CDVInvokedUrlCommand*)command;
+- (void)startCameraLiveness: (CDVInvokedUrlCommand*)command;
 - (void)onSucessCamera: (NSString *)msg;
 - (void)onErrorCameraFace:(NSString *)error;
 - (void)onErrorAcessoBioManager:(NSString *)error;
