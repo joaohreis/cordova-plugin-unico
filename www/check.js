@@ -6,6 +6,16 @@ var PLUGIN_NAME = "UnicoCheckModule";
 
 var UnicoCheckModule = function() {};
 
+UnicoCheckModule.prototype.startCameraLiveness = function(successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, PLUGIN_NAME,"startCameraLiveness", []);
+};
+
+var check = new UnicoCheckModule();
+module.exports = check;
+
+/*
+var UnicoCheckModule = function() {};
+
 UnicoCheckModule.startCameraSmart = function (successCallback, errorCallback) {
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraSmart", []);
 	console.log("startCameraSmart");
@@ -47,3 +57,4 @@ UnicoCheckModule.startCameraOUTBack = function (successCallback, errorCallback) 
 }
 			
 module.exports = UnicoCheckModule;
+*/
