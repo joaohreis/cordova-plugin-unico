@@ -8,8 +8,6 @@
 
 @implementation UnicoCheckModule
 
-@interface CDVCamera ()
-
 @synthesize UnicoCallbackId;
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
