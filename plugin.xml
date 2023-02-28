@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.unico.check"
-        version="0.9.0">
+
+<plugin id="cordova-plugin-unico" version="0.9.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 
   <name>Unico Check</name>
 
@@ -15,14 +14,14 @@
 
 	<config-file target="res/xml/config.xml" parent="/*">
       <feature name="UnicoCheckModule">
-        <param name="android-package" value="com.unico.plugin.UnicoCheckModule"/>
+        <param name="android-package" value="com.unico.UnicoCheckModule"/>
       </feature>
     </config-file>
 
 	<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
-    <source-file src="src/android/UnicoCheckModule.java" target-dir="src/com/unico/plugin/" />
-	<source-file src="src/android/UnicoConfigDefault.java" target-dir="src/com/unico/plugin/" />
-	<source-file src="src/android/UnicoTheme.java" target-dir="src/com/unico/plugin/" />
+    <source-file src="src/android/UnicoCheckModule.java" target-dir="src/com/unico/" />
+	<source-file src="src/android/UnicoConfigDefault.java" target-dir="src/com/unico/" />
+	<source-file src="src/android/UnicoTheme.java" target-dir="src/com/unico/" />
   </platform>
 
   <platform name="ios">
