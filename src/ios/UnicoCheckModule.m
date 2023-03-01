@@ -7,13 +7,11 @@
 @synthesize UnicoCallbackId;
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
+	
+	callback = command.callbackId;
 
-	NSString* msg = [NSString stringWithFormat: @"START PLUGIN startCameraLiveness"];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_OK
-                               messageAsString:msg];
-
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+	NSString * error = NSLocalizedString(@"Teste da mensagem de erro.",nil);
+    [self returnError:error callback:callback];
   
   //[self callLivenessCamera];
   
@@ -151,7 +149,7 @@
   
 }
 
-- (void)returnError:(NSString*)message callback:(NSString*)callback {
+- (void)returnErrorreturnError:(NSString*)message callback:(NSString*)callback {
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus: CDVCommandStatus_ERROR
                                messageAsString: message
@@ -159,6 +157,7 @@
 
     [self.commandDelegate sendPluginResult:result callbackId:callback];
 }
+
 
 // MARK: - Supported Events
 
