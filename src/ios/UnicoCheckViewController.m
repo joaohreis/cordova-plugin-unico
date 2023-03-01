@@ -12,6 +12,7 @@
 @interface UnicoCheckViewController ()
 
 @property (nonatomic, strong) NSString *jsonFileName;
+@property (nonatomic, strong) NSString documentType;
 
 @end
 
@@ -109,6 +110,20 @@
 
 - (void)callDocumentRGBack {
   NSLog(@"callDocumentRGBack");
+  documentType = DocumentRGVerso;
+  [unicoCheck setTheme: [UnicoTheme new]];
+  [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
+}
+
+- (void)callDocumentOUTFront {
+  NSLog(@"callDocumentOUTFront");
+  documentType = DocumentRGFrente;
+  [unicoCheck setTheme: [UnicoTheme new]];
+  [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
+}
+
+- (void)callDocumentOUTBack {
+  NSLog(@"callDocumentOUTBack");
   documentType = DocumentRGVerso;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
