@@ -11,8 +11,8 @@
 	
 	callback = command.callbackId;
 
-	NSString * error = NSLocalizedString(@"Teste da mensagem de erro.",nil);
-    [self returnError:error callback:callback];
+	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
+    [self returnError:msg callback:callback];
   
   //[self callLivenessCamera];
   
