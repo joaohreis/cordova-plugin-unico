@@ -7,42 +7,42 @@
 @synthesize UnicoCallbackId;
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callSmartCamera];
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callLivenessCamera];
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callCameraCNHFront];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callCameraCNHBack];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callCameraRGFront];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callCameraRGBack];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callCameraOUTFront];
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
-	UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self callCameraOUTBack];
 }
 
