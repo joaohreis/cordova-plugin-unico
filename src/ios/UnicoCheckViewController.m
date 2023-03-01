@@ -154,6 +154,10 @@
     case OUT_BACK:
       [cameraOpener openDocument:DocumentNone delegate:self];
       break;
+	case SMART:
+	case LIVENESS:
+		NSLog(@"nao é documento");
+		break;
   }
   
 }
