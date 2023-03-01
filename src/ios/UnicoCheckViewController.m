@@ -17,8 +17,6 @@
 
 @implementation UnicoCheckViewController
 
-@synthesize documentType;
-
 //documentType = DocumentRGFrente;
 
 - (void)viewDidLoad {
@@ -45,6 +43,8 @@
 
   unicoCheck = [[AcessoBioManager alloc] initWithViewController:self];
   // [unicoCheck setTheme:[[UnicoTheme alloc] init]];
+  
+  tipoDocumento = _mode;
 
   switch (_mode) {
     case SMART:
@@ -90,42 +90,36 @@
 
 - (void)callDocumentCNHFront {
   NSLog(@"callDocumentCNHFront");
-  documentType = DocumentCNHFrente;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
 - (void)callDocumentCNHBack {
   NSLog(@"callDocumentCNHBack");
-  documentType = DocumentCNHVerso;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
 - (void)callDocumentRGFront {
   NSLog(@"callDocumentRGFront");
-  documentType = DocumentRGFrente;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
 - (void)callDocumentRGBack {
   NSLog(@"callDocumentRGBack");
-  documentType = DocumentRGVerso;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
 - (void)callDocumentOUTFront {
   NSLog(@"callDocumentOUTFront");
-  documentType = DocumentRGFrente;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
 - (void)callDocumentOUTBack {
   NSLog(@"callDocumentOUTBack");
-  documentType = DocumentRGVerso;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
@@ -141,7 +135,29 @@
 
 -(void)onCameraReadyDocument:(id<AcessoBioCameraOpenerDelegate>)cameraOpener  {
   NSLog(@"onCameraReadyDocument");
-  [cameraOpener openDocument:documentType delegate:self];
+  
+  switch (tipoDocumento) {
+    
+    case CNH_FRONT:
+      [cameraOpener openDocument:DocumentCNHFrente delegate:self];
+      break;
+    case CNH_BACK:
+      [cameraOpener openDocument:DocumentCNHVerso delegate:self];
+      break;
+	case RG_FRONT:
+      [cameraOpener openDocument:DocumentRGFrente delegate:self];
+      break;
+    case RG_BACK:
+      [cameraOpener openDocument:DocumentRGVerso delegate:self];
+      break;
+	case OUT_FRONT:
+      [cameraOpener openDocument:DocumentNone delegate:self];
+      break;
+    case OUT_BACK:
+      [cameraOpener openDocument:DocumentNone delegate:self];
+      break;
+  }
+  
 }
 
 - (void)onCameraFailedDocument:(ErrorBio *)message{
