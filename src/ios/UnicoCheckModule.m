@@ -10,6 +10,7 @@
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
+	showAlert();
 	self.UnicoCallbackId = command.callbackId;  
 	[self openCamera:LIVENESS];
 }
