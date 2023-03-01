@@ -43,8 +43,6 @@
 
   unicoCheck = [[AcessoBioManager alloc] initWithViewController:self];
   // [unicoCheck setTheme:[[UnicoTheme alloc] init]];
-  
-  tipoDocumento = _mode;
 
   switch (_mode) {
     case SMART:
@@ -136,7 +134,7 @@
 -(void)onCameraReadyDocument:(id<AcessoBioCameraOpenerDelegate>)cameraOpener  {
   NSLog(@"onCameraReadyDocument");
   
-  switch (tipoDocumento) {
+  switch (_mode) {
     
     case CNH_FRONT:
       [cameraOpener openDocument:DocumentCNHFrente delegate:self];

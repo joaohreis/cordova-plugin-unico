@@ -11,7 +11,6 @@ SelfieCameraDelegate, AcessoBioSelfieDelegate, DocumentCameraDelegate, AcessoBio
 @property (strong, nonatomic) UnicoCheckModule *acessoBioModule;
 @property (strong, nonatomic) UIViewController *viewOrigin;
 @property (assign, nonatomic) CameraMode mode;
-@property (nonatomic) NSString tipoDocumento;
 
 @end
 
