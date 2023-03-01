@@ -54,27 +54,27 @@
   [self openCamera:LIVENESS];
 }
 
-- (void)startCameraCNHFront {
+- (void)callCameraCNHFront {
   [self openCamera:CNH_FRONT];
 }
 
-- (void)startCameraCNHBack {
+- (void)callCameraCNHBack {
   [self openCamera:CNH_BACK];
 }
 
-- (void)startCameraRGFront {
+- (void)callCameraRGFront {
   [self openCamera:RG_FRONT];
 }
 
-- (void)startCameraRGBack {
+- (void)callCameraRGBack {
   [self openCamera:RG_FRONT];
 }
 
-- (void)startCameraOUTFront {
+- (void)callCameraOUTFront {
   [self openCamera:OUT_FRONT];
 }
 
-- (void)startCameraOUTBack {
+- (void)callCameraOUTBack {
   [self openCamera:OUT_BACK];
 }
 
