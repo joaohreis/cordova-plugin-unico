@@ -100,20 +100,8 @@
   });
 }
 
-// Will be called when this module's first listener is added.
--(void)startObserving {
-    self.hasListeners = YES;
-    // Set up any upstream listeners or background tasks as necessary
-}
-
-// Will be called when this module's last listener is removed, or on dealloc.
--(void)stopObserving {
-    self.hasListeners = YES;
-    // Remove upstream listeners, stop unnecessary background tasks
-}
-
 - (void)onSucessCamera: (NSString *)msg {
-  if(self.hasListeners) {
+  
     //[self sendEventWithName:@"onSuccess" body:@{@"objResult": msg}];
 	
     CDVPluginResult* result = [CDVPluginResult
@@ -122,11 +110,11 @@
 	[result setKeepCallback:[NSNumber numberWithBool:NO]];
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  }  
+    
 }
 
 - (void)onErrorCameraFace:(NSString *)error {
-  if(self.hasListeners) {
+  
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
@@ -134,11 +122,11 @@
 	[result setKeepCallback:[NSNumber numberWithBool:NO]];							   
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  }
+  
 }
 
 - (void)onErrorAcessoBioManager:(NSString *)error {
-  if (self.hasListeners) {
+  
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
@@ -147,7 +135,7 @@
 	[result setKeepCallback:[NSNumber numberWithBool:NO]];
 	
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  }
+  
 }
 
 - (void)systemClosedCameraTimeoutFaceInference {
@@ -163,9 +151,9 @@
 }
 
 - (void)systemClosedCameraTimeoutSession {
-  //[self sendEventWithName:@"onError" body:@{@"objResult": @"Tempo de sessão excedido"}];
-  NSString* msg = [NSString stringWithFormat: @"Tempo de sessão excedido"];
-  CDVPluginResult* result = [CDVPluginResult
+	//[self sendEventWithName:@"onError" body:@{@"objResult": @"Tempo de sessão excedido"}];
+	NSString* msg = [NSString stringWithFormat: @"Tempo de sessão excedido"];
+	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
@@ -175,7 +163,7 @@
 }
 
 - (void)userClosedCameraManually {
-  if(self.hasListeners) {
+
     //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
 	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
 	CDVPluginResult* result = [CDVPluginResult
@@ -185,7 +173,7 @@
 	[result setKeepCallback:[NSNumber numberWithBool:NO]];
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  }
+  
 }
 
 -(void)showAlert{
