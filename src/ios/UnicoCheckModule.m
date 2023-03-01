@@ -93,7 +93,7 @@
    
   });
 }
-/*
+
 // Will be called when this module's first listener is added.
 -(void)startObserving {
     self.hasListeners = YES;
@@ -102,11 +102,9 @@
 
 // Will be called when this module's last listener is removed, or on dealloc.
 -(void)stopObserving {
-    self.hasListeners = NO;
+    self.hasListeners = YES;
     // Remove upstream listeners, stop unnecessary background tasks
 }
-*/
-self.hasListeners = YES;
 
 - (void)onSucessCamera: (NSString *)msg {
   if(self.hasListeners) {
