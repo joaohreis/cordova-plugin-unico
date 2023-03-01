@@ -45,30 +45,33 @@
   // [unicoCheck setTheme:[[UnicoTheme alloc] init]];
 
   switch (_mode) {
-    case DEFAULT:
-      [self performSelector:@selector(callDefaultCamera) withObject:nil afterDelay:0.5];
-      break;
     case SMART:
       [self performSelector:@selector(callSmartCamera) withObject:nil afterDelay:0.5];
       break;
     case LIVENESS:
       [self performSelector:@selector(callLivenessCamera) withObject:nil afterDelay:0.5];
       break;
-    case DOCUMENT_FRONT:
-      [self performSelector:@selector(callDocumentFrontCamera)    withObject:nil afterDelay:0.5];
+    case CNH_FRONT:
+      [self performSelector:@selector(callDocumentCNHFront)    withObject:nil afterDelay:0.5];
       break;
-    case DOCUMENT_BACK:
-      [self performSelector:@selector(callDocumentBackCamera) withObject:nil afterDelay:0.5];
+    case CNH_BACK:
+      [self performSelector:@selector(callDocumentCNHBack) withObject:nil afterDelay:0.5];
+      break;
+	case RG_FRONT:
+      [self performSelector:@selector(callDocumentRGFront)    withObject:nil afterDelay:0.5];
+      break;
+    case RG_BACK:
+      [self performSelector:@selector(callDocumentRGBack) withObject:nil afterDelay:0.5];
+      break;
+	case OUT_FRONT:
+      [self performSelector:@selector(callDocumentOUTFront)    withObject:nil afterDelay:0.5];
+      break;
+    case OUT_BACK:
+      [self performSelector:@selector(callDocumentOUTBack) withObject:nil afterDelay:0.5];
       break;
   }
 }
 
-- (void)callDefaultCamera {
-  [unicoCheck setSmartFrame:false];
-  [unicoCheck setAutoCapture:false];
-  [unicoCheck setTheme: [UnicoTheme new]];
-  [[unicoCheck build] prepareSelfieCamera:self config: [UnicoConfig new]];
-}
 
 - (void)callSmartCamera {
   [unicoCheck setSmartFrame:true];
@@ -83,16 +86,30 @@
   [[unicoCheck build] prepareSelfieCamera:self config: [UnicoConfig new]];
 }
 
-- (void)callDocumentFrontCamera {
-  NSLog(@"callDocumentFrontCamera");
-//  documentType = DocumentRGFrente;
+- (void)callDocumentCNHFront {
+  NSLog(@"callDocumentCNHFront");
+  documentType = DocumentCNHFrente;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
-- (void)callDocumentBackCamera {
-  NSLog(@"callDocumentBackCamera");
-//  documentType = DocumentRGVerso;
+- (void)callDocumentCNHBack {
+  NSLog(@"callDocumentCNHBack");
+  documentType = DocumentCNHVerso;
+  [unicoCheck setTheme: [UnicoTheme new]];
+  [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
+}
+
+- (void)callDocumentRGFront {
+  NSLog(@"callDocumentRGFront");
+  documentType = DocumentRGFrente;
+  [unicoCheck setTheme: [UnicoTheme new]];
+  [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
+}
+
+- (void)callDocumentRGBack {
+  NSLog(@"callDocumentRGBack");
+  documentType = DocumentRGVerso;
   [unicoCheck setTheme: [UnicoTheme new]];
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
@@ -108,7 +125,7 @@
 
 -(void)onCameraReadyDocument:(id<AcessoBioCameraOpenerDelegate>)cameraOpener  {
   NSLog(@"onCameraReadyDocument");
-  [cameraOpener openDocument:DocumentCNHFrente delegate:self];
+  [cameraOpener openDocument:documentType delegate:self];
 }
 
 - (void)onCameraFailedDocument:(ErrorBio *)message{

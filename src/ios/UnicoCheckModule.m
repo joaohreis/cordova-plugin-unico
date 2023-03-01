@@ -6,43 +6,76 @@
 
 @synthesize UnicoCallbackId;
 
+- (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callSmartCamera];
+}
+
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
-	
-	UnicoCallbackId = command.callbackId;
-
-	NSString* msg = [NSString stringWithFormat: @"CHAMADA startCameraLiveness"];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:msg];
-
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  
-  //[self callLivenessCamera];
-  
+	UnicoCallbackId = command.callbackId;  
+	[self callLivenessCamera];
 }
 
-- (void)callDefaultCamera {
-  [self openCamera:DEFAULT];
+- (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callCameraCNHFront];
 }
 
+- (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callCameraCNHBack];
+}
+
+- (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callCameraRGFront];
+}
+
+- (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callCameraRGBack];
+}
+
+- (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callCameraOUTFront];
+}
+
+- (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
+	UnicoCallbackId = command.callbackId;  
+	[self callCameraOUTBack];
+}
 
 - (void)callSmartCamera {
   [self openCamera:SMART];
 }
 
-
 - (void)callLivenessCamera {
   [self openCamera:LIVENESS];
 }
 
-
-- (void)callDocumentFrontCamera {
-  [self openCamera:DOCUMENT_FRONT];
+- (void)startCameraCNHFront {
+  [self openCamera:CNH_FRONT];
 }
 
+- (void)startCameraCNHBack {
+  [self openCamera:CNH_BACK];
+}
 
-- (void)callDocumentBackCamera {
-  [self openCamera:DOCUMENT_BACK];
+- (void)startCameraRGFront {
+  [self openCamera:RG_FRONT];
+}
+
+- (void)startCameraRGBack {
+  [self openCamera:RG_FRONT];
+}
+
+- (void)startCameraOUTFront {
+  [self openCamera:OUT_FRONT];
+}
+
+- (void)startCameraOUTBack {
+  [self openCamera:OUT_BACK];
 }
 
 - (void)openCamera: (CameraMode)cameraMode {
