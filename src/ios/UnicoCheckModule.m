@@ -10,7 +10,6 @@
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
-	showAlert();
 	self.UnicoCallbackId = command.callbackId;  
 	[self openCamera:LIVENESS];
 }
@@ -80,6 +79,7 @@
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
+	result.setKeepCallback(true);
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }  
@@ -91,6 +91,7 @@
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
+	result.setKeepCallback(true);							   
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }
@@ -103,6 +104,8 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
 
+	result.setKeepCallback(true);
+	
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }
 }
@@ -114,6 +117,8 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
+	result.setKeepCallback(true);
+
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 }
 
@@ -123,6 +128,8 @@
   CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
+
+	result.setKeepCallback(true);
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 }
@@ -134,6 +141,8 @@
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
+
+	result.setKeepCallback(true);
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   }
