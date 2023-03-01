@@ -4,78 +4,44 @@
 
 @implementation UnicoCheckModule
 
-@synthesize UnicoCallbackId;
-
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callSmartCamera];
+	[self openCamera:SMART];
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callLivenessCamera];
+	[self openCamera:LIVENESS];
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callCameraCNHFront];
+	[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callCameraCNHBack];
+	[self openCamera:CNH_BACK];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callCameraRGFront];
+	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callCameraRGBack];
+	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callCameraOUTFront];
+	[self openCamera:OUT_FRONT];
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	[self callCameraOUTBack];
-}
-
-- (void)callSmartCamera {
-  [self openCamera:SMART];
-}
-
-- (void)callLivenessCamera {
-  [self openCamera:LIVENESS];
-}
-
-- (void)callCameraCNHFront {
-  [self openCamera:CNH_FRONT];
-}
-
-- (void)callCameraCNHBack {
-  [self openCamera:CNH_BACK];
-}
-
-- (void)callCameraRGFront {
-  [self openCamera:RG_FRONT];
-}
-
-- (void)callCameraRGBack {
-  [self openCamera:RG_FRONT];
-}
-
-- (void)callCameraOUTFront {
-  [self openCamera:OUT_FRONT];
-}
-
-- (void)callCameraOUTBack {
-  [self openCamera:OUT_BACK];
+	[self openCamera:OUT_BACK];
 }
 
 - (void)openCamera: (CameraMode)cameraMode {
@@ -184,15 +150,6 @@
     
   });
   
-}
-
-- (void)returnErrorreturnError:(NSString*)message callback:(NSString*)callback {
-    CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus: CDVCommandStatus_ERROR
-                               messageAsString: message
-                               ];
-
-    [self.commandDelegate sendPluginResult:result callbackId:callback];
 }
 
 

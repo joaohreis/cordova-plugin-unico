@@ -8,8 +8,7 @@
 
 @property (nonatomic) bool hasListeners;
 
-@property (nonatomic, copy) NSString *UnicoCallbackId;
-- (void)init:(CDVInvokedUrlCommand*)command;
+@property (nonatomic) NSString *UnicoCallbackId;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
 	SMART,
@@ -38,7 +37,6 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 - (void)systemClosedCameraTimeoutSession;
 - (void)userClosedCameraManually;
 
-- (void)returnError:(NSString*)message callback:(NSString*)callback;
 
 //- (void) greet:(CDVInvokedUrlCommand*)command;
 
