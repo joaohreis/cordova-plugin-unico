@@ -12,11 +12,12 @@
 @interface UnicoCheckViewController ()
 
 @property (nonatomic, strong) NSString *jsonFileName;
-@property (nonatomic, strong) NSString documentType;
 
 @end
 
 @implementation UnicoCheckViewController
+
+@synthesize documentType;
 
 //documentType = DocumentRGFrente;
 
