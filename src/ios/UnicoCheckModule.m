@@ -7,12 +7,15 @@
 @synthesize UnicoCallbackId;
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
-	NSString*       callback;
 	
-	callback = command.callbackId;
+	UnicoCallbackId = command.callbackId;
 
-	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
-    [self returnError:msg callback:callback];
+	NSString* msg = [NSString stringWithFormat: @"CHAMADA startCameraLiveness"];
+	CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_ERROR
+                               messageAsString:msg];
+
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   
   //[self callLivenessCamera];
   
