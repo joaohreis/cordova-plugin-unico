@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 - (void)systemClosedCameraTimeoutSession;
 - (void)userClosedCameraManually;
 
+- (void)returnError:(NSString*)message callback:(NSString*)callback;
+
 //- (void) greet:(CDVInvokedUrlCommand*)command;
 
 @end

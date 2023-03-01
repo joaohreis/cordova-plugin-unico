@@ -3,30 +3,31 @@
 
 ///Esta classe é um exemplo de como implementar o AcessoBioConfigDataSource, entretanto é preferível que esses dados venham de algum Remote Config ou Backend.
 
-@implementation UnicoConfig : NSObject
+@implementation UnicoConfig : NSObject 
+
 
 - (NSString * _Nonnull)getBundleIdentifier {
-    return @"<YOUR_MOBILE_BUNDLE_IDENTIFIER>";
+    return @"1571310558";
 }
 
 - (NSString * _Nonnull)getHostInfo {
-    return @"<YOUR_HOST_INFO>";
+    return @"nRMqSJJeWMZ0K4n9Dxs/Zhb5RslAxes+pmH0gJgmVtZImMYBRmw3bx3E0ehCDJnY";
 }
 
 - (NSString * _Nonnull)getHostKey {
-    return @"<YOUR_HOST_KEY>";
+    return @"r930Imj0FlHBf/Y8DGRIIYIxhU5SYVm9+nG+kgCNmKGmwmyWhRVuI9vbBHnf6Jfm";
 }
 
 - (NSString * _Nonnull)getMobileSdkAppId {
-    return @"<YOUR_MOBILE_SDK_APP_ID>";
+    return @"2:56:ios";
 }
 
 - (NSString * _Nonnull)getProjectId {
-    return @"<YOUR_PROJECT_ID>";
+    return @"Bene.com.vc";
 }
 
 - (NSString * _Nonnull)getProjectNumber {
-    return @"<YOUR_PROJECT_NUMBER>";
+    return @"480761954839809349276448";
 }
 
 @end

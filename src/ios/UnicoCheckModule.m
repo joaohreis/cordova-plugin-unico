@@ -14,9 +14,7 @@
 
   CDVPluginResult *pluginResult;
 
-	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao startCameraLiveness"];
-
-  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+  [self returnError:@"funcao startCameraLiveness" callback:command.callbackId];
   
   [self callLivenessCamera];
   
@@ -163,6 +161,15 @@
     
   });
   
+}
+
+- (void)returnError:(NSString*)message callback:(NSString*)callback {
+    CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus: CDVCommandStatus_ERROR
+                               messageAsString: message
+                               ];
+
+    [self.commandDelegate sendPluginResult:result callbackId:callback];
 }
 
 // MARK: - Supported Events
