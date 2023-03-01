@@ -2,33 +2,21 @@
 #import "UnicoCheckModule.h"
 #import "UnicoCheckViewController.h"
 
-@interface UnicoCheckModule ()
-
-@end
-
 @implementation UnicoCheckModule
 
 @synthesize UnicoCallbackId;
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 
-  CDVPluginResult *pluginResult;
+	NSString* msg = [NSString stringWithFormat: @"START PLUGIN startCameraLiveness"];
+	CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_OK
+                               messageAsString:msg];
 
-  [self returnError:@"funcao startCameraLiveness" callback:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
   
-  [self callLivenessCamera];
+  //[self callLivenessCamera];
   
-}
-
-- (void)init:(CDVInvokedUrlCommand*)command
-{
-  self.UnicoCallbackId = command.callbackId;
-  NSLog(@"[objC] callbackId: %@", self.UnicoCallbackId);
-  
-  CDVPluginResult *pluginResult;
-  
-  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"funcao init"];
-
 }
 
 - (void)callDefaultCamera {
