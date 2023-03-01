@@ -107,7 +107,7 @@
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
-	[result setKeepCallback:[NSNumber numberWithBool:NO]];
+	[result setKeepCallback:[NSNumber numberWithBool:YES]];
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
     
@@ -119,7 +119,7 @@
 	CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
-	[result setKeepCallback:[NSNumber numberWithBool:NO]];							   
+	[result setKeepCallback:[NSNumber numberWithBool:YES]];							   
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   
@@ -132,7 +132,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:error];
 
-	[result setKeepCallback:[NSNumber numberWithBool:NO]];
+	[result setKeepCallback:[NSNumber numberWithBool:YES]];
 	
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   
@@ -145,7 +145,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-	[result setKeepCallback:[NSNumber numberWithBool:NO]];
+	[result setKeepCallback:[NSNumber numberWithBool:YES]];
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 }
@@ -157,7 +157,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-	[result setKeepCallback:[NSNumber numberWithBool:NO]];
+	[result setKeepCallback:[NSNumber numberWithBool:YES]];
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 }
@@ -170,7 +170,7 @@
                                resultWithStatus:CDVCommandStatus_ERROR
                                messageAsString:msg];
 
-	[result setKeepCallback:[NSNumber numberWithBool:NO]];
+	[result setKeepCallback:[NSNumber numberWithBool:YES]];
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   

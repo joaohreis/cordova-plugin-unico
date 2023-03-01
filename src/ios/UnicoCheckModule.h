@@ -6,8 +6,6 @@
 @interface UnicoCheckModule : CDVPlugin
 {}
 
-@property (nonatomic) bool hasListeners;
-
 @property (nonatomic) NSString *UnicoCallbackId;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
