@@ -7,6 +7,7 @@
 @synthesize UnicoCallbackId;
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
+	NSString*       callback;
 	
 	callback = command.callbackId;
 
