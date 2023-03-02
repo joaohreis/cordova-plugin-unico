@@ -37,11 +37,15 @@
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
 	
-	[self.commandDelegate runInBackground:^{
+	
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-		[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+		//[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:_UnicoCallbackId];
-	}];
+	
+	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
+
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+	[alert show];
 	
 	[self openCamera:OUT_FRONT];
 }
@@ -145,13 +149,13 @@
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId: %@", self.UnicoCallbackId];
+	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
 	
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
-    [pluginResult setKeepCallback:[NSNumber numberWithBool:NO]];
+    //[pluginResult setKeepCallback:[NSNumber numberWithBool:NO]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
 }
 
