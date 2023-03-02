@@ -16,9 +16,6 @@
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	self.command = command;
-	
 	[self openCamera:CNH_FRONT];
 }
 
