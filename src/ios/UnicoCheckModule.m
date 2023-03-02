@@ -24,7 +24,7 @@
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 	
-	[self openCamera:CNH_FRONT];
+	//[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
