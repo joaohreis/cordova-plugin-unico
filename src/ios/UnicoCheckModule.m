@@ -37,9 +37,11 @@
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
 	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-    [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:_UnicoCallbackId];
+	[self.commandDelegate runInBackground:^{
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
+		[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:_UnicoCallbackId];
+	}];
 	
 	[self openCamera:OUT_FRONT];
 }
