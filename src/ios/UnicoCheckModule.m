@@ -149,7 +149,7 @@
 	[alert show];
 	
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
-    [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+    [pluginResult setKeepCallback:[NSNumber numberWithBool:NO]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
 }
 
