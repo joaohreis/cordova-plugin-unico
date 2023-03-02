@@ -16,6 +16,16 @@
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
+	
+	NSString* msg = [NSString stringWithFormat: @"START CNH"];
+	CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_OK
+                               messageAsString:msg];
+
+	[result setKeepCallbackAsBool:YES];
+
+    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
+	
 	[self openCamera:CNH_FRONT];
 }
 
@@ -55,7 +65,7 @@
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
     
-    [view presentViewController:unicoView animated:NO completion:nil];
+    [view presentViewController:unicoView animated:YES completion:nil];
    
   });
 }
