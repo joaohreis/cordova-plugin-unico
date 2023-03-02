@@ -6,81 +6,41 @@
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
 	[self openCamera:SMART];
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:LIVENESS];
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;
-
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:CNH_BACK];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:OUT_FRONT];
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-	
 	[self openCamera:OUT_BACK];
 }
 
@@ -95,7 +55,7 @@
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
     
-    [view presentViewController:unicoView animated:YES completion:nil];
+    [view presentViewController:unicoView animated:NO completion:nil];
    
   });
 }
