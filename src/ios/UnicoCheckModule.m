@@ -137,9 +137,8 @@
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
-  [self.commandDelegate runInBackground:^{
-		[self sendErrorToDelegate:@"Usuário fechou a câmera manualmente"];
-	}];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:@"Usuário fechou a câmera manualmente" delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+	[alert show];
 }
 
 -(void)showAlert{
