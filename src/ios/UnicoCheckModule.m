@@ -39,7 +39,7 @@
 	
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
     [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:UnicoCallbackId];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:_UnicoCallbackId];
 	
 	[self openCamera:OUT_FRONT];
 }
