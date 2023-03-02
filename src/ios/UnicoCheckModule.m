@@ -15,7 +15,7 @@
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
-	self.UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:CNH_FRONT];
 }
 
@@ -36,6 +36,11 @@
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
+	
+	CDVPluginResult* pluginResult = [sendPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
+	[pluginResult setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:UnicoCallbackId];
+	
 	[self openCamera:OUT_FRONT];
 }
 
@@ -138,17 +143,14 @@
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-  
-	CDVPluginResult* result = nil;
-	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to scan barcode!"];
-    
-	[result setKeepCallbackAsBool:YES];
-	[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];//You will have to store the callbackId somewhere so you can use it on the deletage, like creating a @property on the .h
-	
-	NSString *mensagem = [[NSString alloc] initWithFormat:@"Você digitou %@", self.UnicoCallbackId];
+	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
+	
+	CDVPluginResult* pluginResult = [sendPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
+	[pluginResult setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
 }
 
 -(void)showAlert{
