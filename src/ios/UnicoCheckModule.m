@@ -17,14 +17,9 @@
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
 	
-	NSString* msg = [NSString stringWithFormat: @"START CNH"];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:msg];
-
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+	self.command = command;
 	
-	//[self openCamera:CNH_FRONT];
+	[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
@@ -145,6 +140,9 @@
 
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
+  [self.commandDelegate runInBackground:^{
+		[self sendErrorToDelegate:@"Usuário fechou a câmera manualmente"];
+	}
 }
 
 -(void)showAlert{
@@ -161,6 +159,11 @@
   
 }
 
+- (void)sendErrorToDelegate:(NSString *)errorMessage {
+	CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                    messageAsString:errorMessage];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
+}
 
 // MARK: - Supported Events
 
