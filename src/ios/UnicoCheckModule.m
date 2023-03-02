@@ -46,9 +46,7 @@ NSString *msg_error = nil;
 	   {
 			CDVPluginResult* result = [CDVPluginResult
 									   resultWithStatus:CDVCommandStatus_ERROR
-									   messageAsString:error];
-			[result setKeepCallbackAsBool:YES];							   
-
+									   messageAsString:msg_error];
 			[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 	   }
 	
