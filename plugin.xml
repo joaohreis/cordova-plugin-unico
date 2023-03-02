@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<plugin id="cordova-plugin-unico" version="0.9.6" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-unico" version="0.9.7" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 
   <name>Unico Check Module</name>
 
@@ -29,7 +29,6 @@
     <config-file target="config.xml" parent="/*">
       <feature name="UnicoCheckModule">
         <param name="ios-package" value="UnicoCheckModule" />
-		<param name="onload" value="true" />
       </feature>
     </config-file>
 
