@@ -41,7 +41,6 @@ NSString *msg_error = nil;
 	msg_error = nil;
 	
 	do {
-	   statement(s);
 	   
 	   if(msg_error != nil)
 	   {
