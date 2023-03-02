@@ -4,6 +4,8 @@
 
 @implementation UnicoCheckModule
 
+NSString *msg_error;
+
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
 	[self openCamera:SMART];
@@ -35,17 +37,32 @@
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
-	self.UnicoCallbackId = command.callbackId;  
 	
+	msg_error = @'';
 	
-		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-		//[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:_UnicoCallbackId];
+	do {
+	   statement(s);
+	   
+	   if(msg_error != '')
+	   {
+			CDVPluginResult* result = [CDVPluginResult
+									   resultWithStatus:CDVCommandStatus_ERROR
+									   messageAsString:error];
+			[result setKeepCallbackAsBool:YES];							   
+
+			[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
+	   }
 	
+	} while( msg_error == '' );
+	
+	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
+	*/
+	
+	
 	
 	[self openCamera:OUT_FRONT];
 }
@@ -149,14 +166,12 @@
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
+	msg_error = @"Usuário fechou a câmera manualmente";
+	
+	/*NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-	[alert show];
-	
-	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
-    //[pluginResult setKeepCallback:[NSNumber numberWithBool:NO]];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
+	[alert show];*/
 }
 
 -(void)showAlert{
