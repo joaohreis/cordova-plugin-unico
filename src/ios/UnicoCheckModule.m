@@ -37,9 +37,9 @@
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;  
 	
-	CDVPluginResult* pluginResult = [sendPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
-	[pluginResult setKeepCallbackAsBool:YES];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:UnicoCallbackId];
+	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
+    [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:UnicoCallbackId];
 	
 	[self openCamera:OUT_FRONT];
 }
@@ -148,9 +148,9 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
 	
-	CDVPluginResult* pluginResult = [sendPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
-	[pluginResult setKeepCallbackAsBool:YES];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
+	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Usuário fechou a câmera manualmente"];
+    [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
 }
 
 -(void)showAlert{
