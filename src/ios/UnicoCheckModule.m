@@ -139,7 +139,7 @@
   */
   [self.commandDelegate runInBackground:^{
 		[self sendErrorToDelegate:@"Usuário fechou a câmera manualmente"];
-	}
+	}];
 }
 
 -(void)showAlert{
