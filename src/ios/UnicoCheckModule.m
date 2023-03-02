@@ -41,7 +41,7 @@ NSString *msg_error = nil;
 	msg_error = nil;
 	
 	do {
-	   
+	   sleep(1);
 	   if(msg_error != nil)
 	   {
 			CDVPluginResult* result = [CDVPluginResult
