@@ -4,7 +4,7 @@
 
 @implementation UnicoCheckModule
 
-@property (nonatomic, strong) NSString *msg_error;
+NSString *msg_error;
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
