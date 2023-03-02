@@ -22,8 +22,6 @@
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
 
-	[result setKeepCallbackAsBool:YES];
-
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 	
 	[self openCamera:CNH_FRONT];
