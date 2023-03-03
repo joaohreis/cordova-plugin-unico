@@ -59,7 +59,7 @@ NSString *msg_error;
 	
 	[self openCamera:OUT_FRONT];
 	
-	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+	/*CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 	[result setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
@@ -160,14 +160,11 @@ NSString *msg_error;
 
 - (void)userClosedCameraManually {
 
-	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
-
-	CDVPluginResult* result = [CDVPluginResult	
-                               resultWithStatus:CDVCommandStatus_OK
-                               messageAsString:msg];
-	[result setKeepCallbackAsBool:YES];
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-
+	[self.commandDelegate runInBackground:^{
+        NSString* payload = @"Usuário fechou a câmera manualmente"];;
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payload];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
+    }];
 
 	/*
     //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
