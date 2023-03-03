@@ -41,7 +41,7 @@ NSString *msg_error;
 	msg_error = nil;
 	
 	[self openCamera:OUT_FRONT];
-	
+	/*
 	while (TRUE)
 	{
 	   if (msg_error != nil)
@@ -58,7 +58,7 @@ NSString *msg_error;
 	   }  
 	   //usleep(10000);
 	}
-	
+	*/
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
 
@@ -168,6 +168,7 @@ NSString *msg_error;
   */
   
 	msg_error = @"Usuário fechou a câmera manualmente";
+	[self.sendErrorToDelegate];
 	
 	/*NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
@@ -189,10 +190,12 @@ NSString *msg_error;
   
 }
 
-- (void)sendErrorToDelegate:(NSString *)errorMessage {
+
+- (void)sendErrorToDelegate:(CDVInvokedUrlCommand*)command {
+	
 	CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                                     messageAsString:errorMessage];
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 // MARK: - Supported Events
