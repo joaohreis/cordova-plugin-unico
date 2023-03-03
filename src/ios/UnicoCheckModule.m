@@ -61,6 +61,17 @@ NSString *msg_error;
 	
 	[self openCamera:OUT_FRONT];
 	
+	while(msg_error != nil)
+	{
+		CDVPluginResult* result = [CDVPluginResult
+								   resultWithStatus:CDVCommandStatus_ERROR
+								   messageAsString:msg_error];
+		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
+		
+		sleep(1);
+	}
+	
+	/*
 	if (![NSThread isMainThread]) {
 
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -85,7 +96,7 @@ NSString *msg_error;
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
-	
+	*/
 	
 }
 
