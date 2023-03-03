@@ -41,7 +41,7 @@ NSString *msg_error;
 	msg_error = nil;
 	
 	[self openCamera:OUT_FRONT];
-	
+	/*
 	while (TRUE)
 	{
 
@@ -57,7 +57,7 @@ NSString *msg_error;
 	   // adapt this value in microseconds.
 	   usleep(10000);
 	}
-	
+	*/
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
 
