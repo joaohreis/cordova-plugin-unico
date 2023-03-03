@@ -168,7 +168,7 @@ NSString *msg_error;
   */
   
 	msg_error = @"Usuário fechou a câmera manualmente";
-	[self.sendErrorToDelegate];
+	[self.sendErrorToDelegate()];
 	
 	/*NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
@@ -194,7 +194,7 @@ NSString *msg_error;
 - (void)sendErrorToDelegate:(CDVInvokedUrlCommand*)command {
 	
 	CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                                    messageAsString:errorMessage];
+                                                    messageAsString:msg_error];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
