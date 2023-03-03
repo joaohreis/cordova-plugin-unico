@@ -161,7 +161,7 @@ NSString *msg_error;
 - (void)userClosedCameraManually {
 
 	[self.commandDelegate runInBackground:^{
-        NSString* payload = @"Usuário fechou a câmera manualmente"];;
+        NSString* payload = @"Usuário fechou a câmera manualmente";
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payload];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
     }];
