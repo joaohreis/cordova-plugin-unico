@@ -56,7 +56,7 @@ NSString *msg_error;
 	
 		   break;
 	   }  
-	   usleep(10000);
+	   //usleep(10000);
 	}
 	
 	/*
