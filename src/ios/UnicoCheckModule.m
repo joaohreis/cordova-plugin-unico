@@ -44,7 +44,7 @@ NSString *msg_error;
 	
 	while (TRUE)
 	{
-	   if(!msg_error)
+	   if (msg_error != nil)
 	   {
 			CDVPluginResult* result = [CDVPluginResult
 									   resultWithStatus:CDVCommandStatus_ERROR
