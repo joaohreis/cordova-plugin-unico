@@ -10,7 +10,7 @@ NSString *msg_error;
 
 - (void)returnError {
 
-	if (msg_error != nil)
+	//if (msg_error != nil)
 	{
 		CDVPluginResult* result = [CDVPluginResult
 								   resultWithStatus:CDVCommandStatus_ERROR
@@ -19,7 +19,7 @@ NSString *msg_error;
 		
 		/*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 		[alert show];*/
-		self.TimeCallback = nil;
+		//self.TimeCallback = nil;
 	}  
 }
 
@@ -59,8 +59,13 @@ NSString *msg_error;
 	
 	self.UnicoCallbackId = command.callbackId;
 	
+	msg_error = @"Usuário fechou a câmera manualmente";
+	
+	[returnError]
+	
 	[self openCamera:OUT_FRONT];
 	
+	/*
 	while(TRUE)
 	{
 		if(msg_error != nil)
