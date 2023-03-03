@@ -66,7 +66,7 @@ NSString *msg_error;
 		CDVPluginResult* result = [CDVPluginResult
 								   resultWithStatus:CDVCommandStatus_ERROR
 								   messageAsString:msg_error];
-		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
+		[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 		
 		sleep(1);
 	}
@@ -89,14 +89,14 @@ NSString *msg_error;
 									   userInfo:nil
 										repeats:YES];
 	}
-
+	*/
 
 	
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
-	*/
+
 	
 }
 
