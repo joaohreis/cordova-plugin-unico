@@ -61,7 +61,7 @@ NSString *msg_error;
 	
 	msg_error = @"Usuário fechou a câmera manualmente";
 	
-	[self returnError]
+	[self returnError];
 	
 	[self openCamera:OUT_FRONT];
 	
