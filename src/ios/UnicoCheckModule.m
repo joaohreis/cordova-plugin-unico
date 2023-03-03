@@ -64,7 +64,7 @@ NSString *msg_error;
 	if (![NSThread isMainThread]) {
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[NSTimer scheduledTimerWithTimeInterval:0.5
+			self.TimeCallback = [NSTimer scheduledTimerWithTimeInterval:0.5
 											 target:self
 										   selector:@selector(returnError)
 										   userInfo:nil
@@ -72,7 +72,7 @@ NSString *msg_error;
 		});
 	}
 	else{
-		[NSTimer scheduledTimerWithTimeInterval:0.5
+		self.TimeCallback = [NSTimer scheduledTimerWithTimeInterval:0.5
 										 target:self
 									   selector:@selector(returnError)
 									   userInfo:nil
