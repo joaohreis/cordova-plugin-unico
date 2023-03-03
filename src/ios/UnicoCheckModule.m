@@ -4,7 +4,7 @@
 
 @implementation UnicoCheckModule
 
-NSString *msg_error;
+//NSString *msg_error;
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
@@ -38,7 +38,7 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	
-	msg_error = nil;
+	//msg_error = nil;
 	
 	[self openCamera:OUT_FRONT];
 	/*
@@ -166,7 +166,7 @@ NSString *msg_error;
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-	msg_error = @"Usuário fechou a câmera manualmente";
+	//msg_error = @"Usuário fechou a câmera manualmente";
 	
 	/*NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
