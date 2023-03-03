@@ -6,11 +6,12 @@
 
 NSString *msg_error;
 
+@synthesize TimeCallback;
 
 - (void)returnError {
 
 	if (msg_error != nil)
-   {
+	{
 		CDVPluginResult* result = [CDVPluginResult
 								   resultWithStatus:CDVCommandStatus_ERROR
 								   messageAsString:msg_error];
@@ -18,8 +19,8 @@ NSString *msg_error;
 		
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 		[alert show];
-
-   }  
+		self.TimeCallback = nil;
+	}  
 }
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
@@ -63,7 +64,7 @@ NSString *msg_error;
 	if (![NSThread isMainThread]) {
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[NSTimer scheduledTimerWithTimeInterval:5.0
+			[NSTimer scheduledTimerWithTimeInterval:0.5
 											 target:self
 										   selector:@selector(returnError)
 										   userInfo:nil
@@ -71,7 +72,7 @@ NSString *msg_error;
 		});
 	}
 	else{
-		[NSTimer scheduledTimerWithTimeInterval:5.0
+		[NSTimer scheduledTimerWithTimeInterval:0.5
 										 target:self
 									   selector:@selector(returnError)
 									   userInfo:nil

@@ -7,6 +7,7 @@
 {}
 
 @property (nonatomic, strong) NSString *UnicoCallbackId;
+@property (nonatomic, retain) NSTimer *TimeCallback;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
 	SMART,
