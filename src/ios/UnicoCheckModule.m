@@ -6,6 +6,23 @@
 
 NSString *msg_error;
 
+
+- (void)returnError {
+
+	if (msg_error != nil)
+   {
+		CDVPluginResult* result = [CDVPluginResult
+								   resultWithStatus:CDVCommandStatus_ERROR
+								   messageAsString:msg_error];
+		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
+		
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+		[alert show];
+
+	   break;
+   }  
+}
+
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
 	[self openCamera:SMART];
@@ -40,25 +57,29 @@ NSString *msg_error;
 	
 	msg_error = nil;
 	
-	[self openCamera:OUT_FRONT];
-	/*
-	while (TRUE)
-	{
-	   if (msg_error != nil)
-	   {
-			CDVPluginResult* result = [CDVPluginResult
-									   resultWithStatus:CDVCommandStatus_ERROR
-									   messageAsString:msg_error];
-			[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-			
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-			[alert show];
+	self.UnicoCallbackId = command.callbackId;
 	
-		   break;
-	   }  
-	   //usleep(10000);
+	[self openCamera:OUT_FRONT];
+	
+	if (![NSThread isMainThread]) {
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[NSTimer scheduledTimerWithTimeInterval:5.0
+											 target:self
+										   selector:@selector(returnError)
+										   userInfo:nil
+											repeats:YES];
+		});
 	}
-	*/
+	else{
+		[NSTimer scheduledTimerWithTimeInterval:5.0
+										 target:self
+									   selector:@selector(returnError)
+									   userInfo:nil
+										repeats:YES];
+	}
+
+
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
 
@@ -168,7 +189,7 @@ NSString *msg_error;
   */
   
 	msg_error = @"Usuário fechou a câmera manualmente";
-	[self returnError:msg_error callback:self.UnicoCallbackId];
+	//[self returnError:msg_error callback:self.UnicoCallbackId];
 	
 	/*NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
@@ -188,16 +209,6 @@ NSString *msg_error;
     
   });
   
-}
-
-
-- (void)returnError:(NSString*)message callback:(NSString*)callback {
-    CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus: CDVCommandStatus_ERROR
-                               messageAsString: message
-                               ];
-
-    [self.commandDelegate sendPluginResult:result callbackId:callback];
 }
 
 // MARK: - Supported Events
