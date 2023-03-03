@@ -17,8 +17,8 @@ NSString *msg_error;
 								   messageAsString:msg_error];
 		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
 		
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-		[alert show];
+		/*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+		[alert show];*/
 		self.TimeCallback = nil;
 	}  
 }
@@ -80,12 +80,12 @@ NSString *msg_error;
 	}
 
 
-	/*
+	
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
-	*/
+	
 	
 }
 
