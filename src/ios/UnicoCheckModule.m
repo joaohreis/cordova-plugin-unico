@@ -61,14 +61,17 @@ NSString *msg_error;
 	
 	[self openCamera:OUT_FRONT];
 	
-	while(msg_error != nil)
+	while(TRUE)
 	{
-		CDVPluginResult* result = [CDVPluginResult
+		if(msg_error != nil)
+		{
+			CDVPluginResult* result = [CDVPluginResult
 								   resultWithStatus:CDVCommandStatus_ERROR
 								   messageAsString:msg_error];
-		[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-		
-		sleep(1);
+			[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+			break;
+		}
+		sleep(1);		
 	}
 	
 	/*
