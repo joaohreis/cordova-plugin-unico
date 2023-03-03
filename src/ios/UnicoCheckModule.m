@@ -19,7 +19,6 @@ NSString *msg_error;
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 		[alert show];
 
-	   break;
    }  
 }
 
