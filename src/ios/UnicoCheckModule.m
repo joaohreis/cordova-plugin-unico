@@ -55,10 +55,20 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	
-	self.UnicoCallbackId = command.callbackId;
+	self.UnicoCallbackId = command;
 	
-	[self openCamera:OUT_FRONT];
+	[self.commandDelegate runInBackground:^{
+        CDVPluginResult* pluginResult = nil;
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self openCamera:OUT_FRONT];
+        });
+
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:msg_error];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 	
+
 	/*CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 	[result setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
@@ -160,18 +170,7 @@ NSString *msg_error;
 
 - (void)userClosedCameraManually {
 
-	dispatch_async(dispatch_get_main_queue(), ^{
-        NSString* payload = @"Usuário fechou a câmera manualmente";
-        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payload];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
-		
-		NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
-
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-		[alert show];
-		
-    });
-
+	
 	/*
     //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
 	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
@@ -184,10 +183,13 @@ NSString *msg_error;
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-	//msg_error = @"Usuário fechou a câmera manualmente";
+	msg_error = @"Usuário fechou a câmera manualmente";
 	//[self returnError:msg_error callback:self.UnicoCallbackId];
 	
-	
+	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
+
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+	[alert show];
 }
 
 -(void)showAlert{
