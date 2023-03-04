@@ -6,8 +6,6 @@
 
 NSString *msg_error;
 
-@synthesize TimeCallback;
-
 - (void)returnError {
 
 	//if (msg_error != nil)
