@@ -55,9 +55,7 @@ NSString *msg_error;
 	
 	self.UnicoCallbackId = command;
 	
-	[self.commandDelegate runInBackground:^{
-		[self openCamera:OUT_FRONT];
-	}];
+	//[self openCamera:OUT_FRONT];
 	
 	NSString* msg = [NSString stringWithFormat: @"Teste de retorno de erro"];
 	
@@ -65,6 +63,8 @@ NSString *msg_error;
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg];
 	[self.commandDelegate sendPluginResult:result callbackId:_UnicoCallbackId.callbackId];
+	
+	[self userClosedCameraManually];
 	
 }
 
