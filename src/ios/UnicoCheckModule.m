@@ -59,17 +59,6 @@ NSString *msg_error;
 	
 	[self openCamera:OUT_FRONT];
 	
-	/*CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-	[result setKeepCallbackAsBool:YES];
-	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-
-	/*
-	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 1: %@", self.UnicoCallbackId];
-
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-	[alert show];
-	*/
-	
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
