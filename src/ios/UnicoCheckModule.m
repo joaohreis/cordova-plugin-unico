@@ -166,7 +166,7 @@ NSString *msg_error;
 	[self.commandDelegate runInBackground:^{
         CDVPluginResult* pluginResult = nil;
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:UnicoCallbackId.callbackId];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId.callbackId];
     }];
 	
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
