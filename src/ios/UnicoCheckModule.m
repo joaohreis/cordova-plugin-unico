@@ -75,7 +75,7 @@ NSString *msg_error;
 
 - (void)openCamera: (CameraMode)cameraMode {
   
-  dispatch_async(dispatch_get_main_queue(), ^{
+  [self.commandDelegate runInBackground:^{
     
     UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
     
@@ -86,7 +86,7 @@ NSString *msg_error;
     
     [view presentViewController:unicoView animated:YES completion:nil];
    
-  });
+  }];
 }
 
 - (void)onSucessCamera: (NSString *)msg {
