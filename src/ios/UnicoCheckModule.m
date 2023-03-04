@@ -55,7 +55,7 @@ NSString *msg_error;
 	
 	self.UnicoCallbackId = command;
 	
-	//[self openCamera:OUT_FRONT];
+	[self openCamera:OUT_FRONT];
 	
 	NSString* msg = [NSString stringWithFormat: @"Teste de retorno de erro"];
 	
@@ -170,10 +170,11 @@ NSString *msg_error;
 	msg_error = @"Usuário fechou a câmera manualmente";
 	//[self returnError:msg_error callback:self.UnicoCallbackId];
 	
-	
-        CDVPluginResult* pluginResult = nil;
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId.callbackId];
+		
+	CDVPluginResult* result = [CDVPluginResult
+						   resultWithStatus:CDVCommandStatus_ERROR
+						   messageAsString:msg_error];
+	[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId.callbackId];
     
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
