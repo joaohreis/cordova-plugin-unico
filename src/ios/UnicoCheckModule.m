@@ -160,11 +160,17 @@ NSString *msg_error;
 
 - (void)userClosedCameraManually {
 
-	[self.commandDelegate runInBackground:^{
+	dispatch_async(dispatch_get_main_queue(), ^{
         NSString* payload = @"Usuário fechou a câmera manualmente";
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payload];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId];
-    }];
+		
+		NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
+
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+		[alert show];
+		
+    });
 
 	/*
     //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
@@ -181,10 +187,7 @@ NSString *msg_error;
 	//msg_error = @"Usuário fechou a câmera manualmente";
 	//[self returnError:msg_error callback:self.UnicoCallbackId];
 	
-	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
-
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-	[alert show];
+	
 }
 
 -(void)showAlert{
