@@ -57,6 +57,13 @@ NSString *msg_error;
 	
 	[self openCamera:OUT_FRONT];
 	
+	NSString* msg = [NSString stringWithFormat: @"Teste de retorno de erro"];
+	
+	CDVPluginResult* result = [CDVPluginResult
+							   resultWithStatus:CDVCommandStatus_ERROR
+							   messageAsString:msg];
+	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+	
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
