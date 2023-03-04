@@ -55,7 +55,9 @@ NSString *msg_error;
 	
 	self.UnicoCallbackId = command;
 	
-	[self openCamera:OUT_FRONT];
+	[self.commandDelegate runInBackground:^{
+		[self openCamera:OUT_FRONT];
+	}];
 	
 	NSString* msg = [NSString stringWithFormat: @"Teste de retorno de erro"];
 	
