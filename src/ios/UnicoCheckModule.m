@@ -163,16 +163,17 @@ NSString *msg_error;
 	msg_error = @"Usuário fechou a câmera manualmente";
 	//[self returnError:msg_error callback:self.UnicoCallbackId];
 	
-	[self.commandDelegate runInBackground:^{
+	
         CDVPluginResult* pluginResult = nil;
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.UnicoCallbackId.callbackId];
-    }];
-	
+    
+	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
 	[alert show];
+	*/
 }
 
 -(void)showAlert{
