@@ -53,13 +53,13 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	
-	//[self.commandDelegate runInBackground:^{
-		self.UnicoCallbackId = command;
-	//}];
-	
 	dispatch_async(dispatch_get_main_queue(), ^{
+		self.UnicoCallbackId = command;
+	 });
+	
+	//dispatch_async(dispatch_get_main_queue(), ^{
 		[self openCamera:OUT_FRONT];
-    });
+    //});
 
 	
 	//[self userClosedCameraManually];
