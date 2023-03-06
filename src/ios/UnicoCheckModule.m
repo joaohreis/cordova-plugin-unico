@@ -65,8 +65,9 @@ NSString *msg_error;
 								   messageAsString:msg];
 		[self.commandDelegate sendPluginResult:result callbackId:_UnicoCallbackId.callbackId];
 		*/
-		[self userClosedCameraManually];
 	}];
+	
+	[self userClosedCameraManually];
 	
 }
 
