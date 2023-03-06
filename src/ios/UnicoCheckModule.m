@@ -74,8 +74,7 @@ NSString *msg_error;
     
     UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
     
-    //UIViewController *view = [UIApplication sharedApplication].delegate.window.rootViewController;
-	UIViewController *controller = [[UIViewController alloc] init];
+    UIViewController *view = [UIApplication sharedApplication].delegate.window.rootViewController;
     unicoView.viewOrigin = view;
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
