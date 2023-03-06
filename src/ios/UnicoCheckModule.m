@@ -62,6 +62,7 @@ NSString *msg_error;
 }
 
 - (void)openCamera: (CameraMode)cameraMode {
+	
   
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -72,7 +73,7 @@ NSString *msg_error;
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
     
-    [view presentViewController:unicoView animated:YES completion:nil];
+    [view presentViewController:unicoView.picker animated:YES completion:nil];
 	
    
   });
