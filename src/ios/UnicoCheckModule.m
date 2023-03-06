@@ -21,6 +21,21 @@ NSString *msg_error;
 	}  
 }
 
+-(void)runBlockInBackgroundWithTryCatch:(void (^)(void))block forCommand:(CDVInvokedUrlCommand*)command{
+    [self.commandDelegate runInBackground:^{
+        @try {
+            block();
+        } @catch (NSException *exception) {
+            [self sendErrorCallback:command forException:exception];
+        }
+    }];
+}
+
+-(void)sendErrorCallback:(CDVInvokedUrlCommand*)command forException:(NSException*)exception{
+    NSString* message = [NSString stringWithFormat:@"(%@) - %@", exception.name, exception.reason];
+    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus: CDVCommandStatus_ERROR messageAsString:message] callbackId:command.callbackId];
+}
+
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
 	[self openCamera:SMART];
@@ -53,14 +68,13 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	//dispatch_async(dispatch_get_main_queue(), ^{
+	[self runBlockInBackgroundWithTryCatch:^{
+        self.UnicoCallbackId = command;
+	
 		[self openCamera:OUT_FRONT];
-    //});
+    
+	} forCommand:command];
 
-	self.UnicoCallbackId = command;
-	
-	//[self userClosedCameraManually];
-	
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
