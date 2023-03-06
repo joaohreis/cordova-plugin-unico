@@ -53,18 +53,20 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	
-	self.UnicoCallbackId = command;
-	
-	//[self openCamera:OUT_FRONT];
-	/*
-	NSString* msg = [NSString stringWithFormat: @"Teste de retorno de erro"];
-	
-	CDVPluginResult* result = [CDVPluginResult
-							   resultWithStatus:CDVCommandStatus_ERROR
-							   messageAsString:msg];
-	[self.commandDelegate sendPluginResult:result callbackId:_UnicoCallbackId.callbackId];
-	*/
-	[self userClosedCameraManually];
+	[self.commandDelegate runInBackground:^{
+		self.UnicoCallbackId = command;
+		
+		//[self openCamera:OUT_FRONT];
+		/*
+		NSString* msg = [NSString stringWithFormat: @"Teste de retorno de erro"];
+		
+		CDVPluginResult* result = [CDVPluginResult
+								   resultWithStatus:CDVCommandStatus_ERROR
+								   messageAsString:msg];
+		[self.commandDelegate sendPluginResult:result callbackId:_UnicoCallbackId.callbackId];
+		*/
+		[self userClosedCameraManually];
+	}];
 	
 }
 
