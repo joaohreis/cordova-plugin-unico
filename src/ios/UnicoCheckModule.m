@@ -79,7 +79,8 @@ NSString *msg_error;
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
     
-    [view presentViewController:unicoView animated:YES completion:nil];
+    //[view presentViewController:unicoView animated:YES completion:nil];
+	[view showViewController:unicoView];
    
   });
 }
