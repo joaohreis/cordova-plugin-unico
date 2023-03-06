@@ -6,21 +6,6 @@
 
 NSString *msg_error;
 
-- (void)returnError {
-
-	//if (msg_error != nil)
-	{
-		CDVPluginResult* result = [CDVPluginResult
-								   resultWithStatus:CDVCommandStatus_ERROR
-								   messageAsString:msg_error];
-		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-		
-		/*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:msg_error delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-		[alert show];*/
-		//self.TimeCallback = nil;
-	}  
-}
-
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
 	[self openCamera:SMART];
