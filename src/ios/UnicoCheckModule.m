@@ -53,7 +53,7 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command {
 	
-	dispatch_async(dispatch_get_main_queue(), ^{
+	dispatch_after(dispatch_get_main_queue(), ^{
 		self.UnicoCallbackId = command;
 	 });
 	
@@ -167,14 +167,14 @@ NSString *msg_error;
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-	//[self.commandDelegate runInBackground:^{
+	dispatch_after(dispatch_get_main_queue(), ^{
 		msg_error = @"Usuário fechou a câmera manualmente";
 			
 		CDVPluginResult* result = [CDVPluginResult
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId.callbackId];
-    //}];
+    });
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
