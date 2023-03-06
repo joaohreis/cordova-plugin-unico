@@ -212,8 +212,8 @@
 
 - (void)onUserClosedCameraManually {
   NSLog(@"onUserClosedCameraManually");
-  [self.acessoBioModule userClosedCameraManually];
   [self sair];
+  [self.acessoBioModule userClosedCameraManually];
 }
 
 - (void)sair{

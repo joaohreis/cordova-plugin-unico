@@ -44,15 +44,7 @@ NSString *msg_error;
 	[self openCamera:OUT_FRONT];
     
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		msg_error = @"Usuário fechou a câmera manualmente";
-			
-		CDVPluginResult* result = [CDVPluginResult
-							   resultWithStatus:CDVCommandStatus_ERROR
-							   messageAsString:msg_error];
-		[result setKeepCallbackAsBool:YES];
-		[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-    });
+	//[self userClosedCameraManually];
 	
 }
 
@@ -62,7 +54,6 @@ NSString *msg_error;
 }
 
 - (void)openCamera: (CameraMode)cameraMode {
-	
   
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -73,7 +64,7 @@ NSString *msg_error;
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
     
-    [view presentViewController:unicoView.picker animated:YES completion:nil];
+    [view presentViewController:unicoView animated:YES completion:nil];
 	
    
   });
@@ -159,7 +150,7 @@ NSString *msg_error;
     [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
   */
   
-	dispatch_async(dispatch_get_main_queue(), ^{
+	
 		msg_error = @"Usuário fechou a câmera manualmente";
 			
 		CDVPluginResult* result = [CDVPluginResult
@@ -167,7 +158,7 @@ NSString *msg_error;
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId.callbackId];
-    });
+    
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
