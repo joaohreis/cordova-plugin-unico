@@ -51,7 +51,7 @@ NSString *msg_error;
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
-		[self.commandDelegate sendPluginResult:result callbackId:self.command.callbackId];
+		[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
     });
 	
 }
