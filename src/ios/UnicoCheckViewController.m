@@ -212,10 +212,8 @@
 
 - (void)onUserClosedCameraManually {
   NSLog(@"onUserClosedCameraManually");
+  [self.acessoBioModule userClosedCameraManually];
   [self sair];
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-    [self.acessoBioModule userClosedCameraManually];
-  });
 }
 
 - (void)sair{
