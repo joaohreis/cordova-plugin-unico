@@ -44,7 +44,15 @@ NSString *msg_error;
 	[self openCamera:OUT_FRONT];
     
 	
-	//[self userClosedCameraManually];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		msg_error = @"Usuário fechou a câmera manualmente";
+			
+		CDVPluginResult* result = [CDVPluginResult
+							   resultWithStatus:CDVCommandStatus_ERROR
+							   messageAsString:msg_error];
+		[result setKeepCallbackAsBool:YES];
+		[self.commandDelegate sendPluginResult:result callbackId:self.command.callbackId];
+    });
 	
 }
 
