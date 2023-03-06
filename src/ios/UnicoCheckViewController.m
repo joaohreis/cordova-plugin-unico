@@ -217,9 +217,9 @@
 }
 
 - (void)sair{
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+  //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
     [self dismissViewControllerAnimated:YES completion:nil];
-  });
+  //});
 }
 
 @end
