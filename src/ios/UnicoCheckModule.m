@@ -6,11 +6,6 @@ UnicoCheckModule* plugin;
 
 @implementation UnicoCheckModule
 
-static CDVInvokedUrlCommand* _command;
-
-+ (CDVInvokedUrlCommand*)command { return _command; }
-+ (void) setCommand:(CDVInvokedUrlCommand*)command { _command = command; }
-
 NSString *msg_error;
 
 - (void) sendEvent:(NSString*)data :(NSString*)callbackId {
@@ -51,8 +46,7 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	[RGLDocumentReader setCommand:command];
-    plugin = self;
+	//NSString *callbackId = command.callbackId;
 	
 	[self openCamera:OUT_FRONT];
     
@@ -173,14 +167,13 @@ NSString *msg_error;
   
 	
 		msg_error = @"Usuário fechou a câmera manualmente";
-		/*	
+		
 		CDVPluginResult* result = [CDVPluginResult
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
-		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId.callbackId];
-		*/
-		[self sendEvent:msg_error :DocumentReader.command.callbackId];
+		[self.commandDelegate sendPluginResult:result callbackId:UnicoCheckModule.command.callbackId];
+		
     
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];

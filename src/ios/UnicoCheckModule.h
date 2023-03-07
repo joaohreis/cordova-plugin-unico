@@ -1,12 +1,12 @@
 #import <Cordova/CDV.h>
 #import <Cordova/CDVPlugin.h>
-#import <Foundation/Foundation.h>
+#import <Cordova/CDVInvokedUrlCommand.h>
+#import <GLKit/GLKit.h>
 
-@interface UnicoCheckModule : CDVPlugin;
+@interface UnicoCheckModule : CDVPlugin
+{}
 
-@property (class) CDVInvokedUrlCommand* _Nullable command;
-
-//@property (nonatomic, strong) CDVInvokedUrlCommand* UnicoCallbackId;
+@property (nonatomic, strong) CDVInvokedUrlCommand* UnicoCallbackId;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
 	SMART,
@@ -35,7 +35,6 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 - (void)systemClosedCameraTimeoutSession;
 - (void)userClosedCameraManually;
 
-- (void) sendEvent:(NSString*_Nullable)data :(NSString*_Nonnull)callbackId;
 
 //- (void) greet:(CDVInvokedUrlCommand*)command;
 
