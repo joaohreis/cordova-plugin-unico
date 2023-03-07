@@ -98,8 +98,6 @@ NSString *msg_error;
     
     [view presentViewController:unicoView animated:YES completion:nil];
 	
-	[self.viewController.view addSubview:yourView];
-	
    
   });
 }
