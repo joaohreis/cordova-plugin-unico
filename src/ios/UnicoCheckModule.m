@@ -48,17 +48,15 @@ NSString *msg_error;
 	
 	[self openCamera:OUT_FRONT];
     
-	/*
+	
 	msg_error = @"Usuário fechou a câmera manualmente";
 							   
 	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	
-	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
-	[self.commandDelegate sendPluginResult:result callbackId:callbackId];
 	
 	//[self userClosedCameraManually];
-	*/
+	
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
@@ -77,7 +75,7 @@ NSString *msg_error;
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
     
-    [view presentViewController:unicoView animated:YES completion:nil];
+    //[view presentViewController:unicoView animated:YES completion:nil];
 	
    
   });
