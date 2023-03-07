@@ -6,6 +6,11 @@ UnicoCheckModule* plugin;
 
 @implementation UnicoCheckModule
 
+static CDVInvokedUrlCommand* _command;
+
++ (CDVInvokedUrlCommand*)command { return _command; }
++ (void) setCommand:(CDVInvokedUrlCommand*)command { _command = command; }
+
 NSString *msg_error;
 
 - (void) sendEvent:(NSString*)data :(NSString*)callbackId {
@@ -46,7 +51,8 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	//NSString *callbackId = command.callbackId;
+	[RGLDocumentReader setCommand:command];
+    plugin = self;
 	
 	[self openCamera:OUT_FRONT];
     
