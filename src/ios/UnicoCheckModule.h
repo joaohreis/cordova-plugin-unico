@@ -1,6 +1,5 @@
 #import <Cordova/CDV.h>
 #import <Cordova/CDVPlugin.h>
-#import <GLKit/GLKit.h>
 
 @interface UnicoCheckModule : CDVPlugin;
 
