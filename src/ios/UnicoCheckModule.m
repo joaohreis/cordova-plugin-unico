@@ -61,8 +61,6 @@ NSString *msg_error;
 		
 		[view presentViewController:unicoView animated:YES completion:nil];
 		
-		[weakSelf.viewController.view addSubview:yourView];
-		
 	   
 	  });
 		
