@@ -3,8 +3,9 @@
 #import <Cordova/CDVInvokedUrlCommand.h>
 #import <GLKit/GLKit.h>
 
-@interface UnicoCheckModule : CDVPlugin
-{}
+@interface UnicoCheckModule : CDVPlugin;
+
+@property (class) CDVInvokedUrlCommand* _Nullable command;
 
 //@property (nonatomic, strong) CDVInvokedUrlCommand* UnicoCallbackId;
 

@@ -2,7 +2,7 @@
 #import "UnicoCheckModule.h"
 #import "UnicoCheckViewController.h"
 
-DocumentReader* plugin;
+UnicoCheckModule* plugin;
 
 @implementation UnicoCheckModule
 
