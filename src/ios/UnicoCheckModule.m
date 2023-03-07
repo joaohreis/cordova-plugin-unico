@@ -5,35 +5,36 @@
 @implementation UnicoCheckModule
 
 NSString *msg_error;
+typedef void (^Callback)(NSString* response);
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
-	[self openCamera:SMART];
+	[self openCamera:SMART :successCallback :errorCallback];
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:LIVENESS];
+	[self openCamera:LIVENESS :successCallback :errorCallback];
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
-	[self openCamera:CNH_FRONT];
+	[self openCamera:CNH_FRONT :successCallback :errorCallback];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
-	[self openCamera:CNH_BACK];
+	[self openCamera:CNH_BACK :successCallback :errorCallback];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:RG_FRONT];
+	[self openCamera:RG_FRONT :successCallback :errorCallback];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:RG_FRONT];
+	[self openCamera:RG_FRONT :successCallback :errorCallback];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
@@ -54,7 +55,7 @@ NSString *msg_error;
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:OUT_BACK];
+	[self openCamera:OUT_BACK :successCallback :errorCallback];
 }
 
 - (void)openCamera: (CameraMode)cameraMode :(Callback)successCallback :(Callback)errorCallback{
