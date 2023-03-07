@@ -54,7 +54,7 @@ NSString *msg_error;
     
 		UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
 		
-		UIViewController *view = [UIApplication sharedApplication];
+		UIViewController *view = [[[UIApplication sharedApplication] delegate] window].rootViewController;
 		unicoView.viewOrigin = view;
 		unicoView.mode = OUT_FRONT;
 		unicoView.acessoBioModule = self;
