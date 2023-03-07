@@ -8,6 +8,10 @@ UnicoCheckModule* plugin;
 
 NSString *msg_error;
 
+static CDVInvokedUrlCommand* _command;
+
++ (void) setCommand:(CDVInvokedUrlCommand*)command { _command = command; }
+
 - (void) sendEvent:(NSString*)data :(NSString*)callbackId {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:data];
     [result setKeepCallbackAsBool:YES];
@@ -46,7 +50,8 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	//NSString *callbackId = command.callbackId;
+	[UnicoCheckModule setCommand:command];
+    plugin = self;
 	
 	[self openCamera:OUT_FRONT];
     
