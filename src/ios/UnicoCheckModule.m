@@ -6,7 +6,7 @@
 
 NSString *msg_error;
 
-NSString *weakSelf;
+__weak UnicoCheckModule* weakSelf;
 
 
 - (void) sendEvent:(NSString*)data :(NSString*)callbackId {
