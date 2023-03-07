@@ -58,11 +58,11 @@ NSString *weakSelf;
 						   resultWithStatus:CDVCommandStatus_ERROR
 						   messageAsString:msg_error];
 	[result setKeepCallbackAsBool:YES];
-	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+	[weakSelf.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 	
 	
 		
-	[self openCamera:OUT_FRONT];
+	[weakSelf openCamera:OUT_FRONT];
     
 
 	//[self userClosedCameraManually];
