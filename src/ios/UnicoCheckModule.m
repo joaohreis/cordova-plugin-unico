@@ -149,7 +149,7 @@ NSString *msg_error;
 }
 
 - (void)userClosedCameraManually {
-
+	
 	
 	/*
     //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
@@ -172,7 +172,8 @@ NSString *msg_error;
 		[result setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:result callbackId:UnicoCheckModule.command.callbackId];
 		*/
-		[self sendEvent:msg_error :self.UnicoCallbackId.command.callbackId];
+		NSString* callbackId = self.UnicoCallbackId.command.callbackId;
+		[self sendEvent:msg_error :callbackId];
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
