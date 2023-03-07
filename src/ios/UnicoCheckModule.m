@@ -48,34 +48,26 @@ NSString *msg_error;
 	 __weak UnicoCheckModule* weakSelf = self;
 	
 	
-	[self.commandDelegate runInBackground:^{
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-    
-		UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
-		
-		UIViewController *view = [[[UIApplication sharedApplication] delegate] window].rootViewController;
-		unicoView.viewOrigin = view;
-		unicoView.mode = OUT_FRONT;
-		unicoView.acessoBioModule = self;
-		
-		[view presentViewController:unicoView animated:YES completion:nil];
-		
-	   
-	  });
-		
-	}];
-	
-	//[self openCamera:OUT_FRONT];
-    
 	
 	msg_error = @"Usuário fechou a câmera manualmente";
-							  
+		
+	CDVPluginResult* result = [CDVPluginResult
+						   resultWithStatus:CDVCommandStatus_ERROR
+						   messageAsString:msg_error];
+	[result setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 	
-	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
-    [result setKeepCallbackAsBool:YES];
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-	
+	msg_error = @"Usuário fechou a câmera manualmente";
+		
+	CDVPluginResult* resultsu = [CDVPluginResult
+						   resultWithStatus:CDVCommandStatus_OK
+						   messageAsString:msg_error];
+	[resultsu setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:resultsu callbackId:command.callbackId];
+		
+	//[self openCamera:OUT_FRONT];
+    
+
 	//[self userClosedCameraManually];
 	
 }
@@ -91,7 +83,7 @@ NSString *msg_error;
     
     UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
     
-    UIViewController *view = [UIApplication sharedApplication].delegate.window.rootViewController;
+    UIViewController *view = [[[UIApplication sharedApplication] delegate] window].rootViewController;
     unicoView.viewOrigin = view;
     unicoView.mode = cameraMode;
     unicoView.acessoBioModule = self;
