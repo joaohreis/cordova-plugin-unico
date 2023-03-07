@@ -6,6 +6,9 @@
 
 NSString *msg_error;
 
+NSString *weakSelf;
+
+
 - (void) sendEvent:(NSString*)data :(NSString*)callbackId {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:data];
     [result setKeepCallbackAsBool:YES];
@@ -45,11 +48,11 @@ NSString *msg_error;
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
 	self.UnicoCallbackId = command.callbackId;
-	 __weak UnicoCheckModule* weakSelf = self;
+	weakSelf = self;
 	
 	
 	
-	msg_error = @"Usuário fechou a câmera manualmente";
+	msg_error = @"RETORNO ANTES DE CHAMAR CAMERA";
 		
 	CDVPluginResult* result = [CDVPluginResult
 						   resultWithStatus:CDVCommandStatus_ERROR
@@ -57,15 +60,9 @@ NSString *msg_error;
 	[result setKeepCallbackAsBool:YES];
 	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 	
-	msg_error = @"Usuário fechou a câmera manualmente";
+	
 		
-	CDVPluginResult* resultsu = [CDVPluginResult
-						   resultWithStatus:CDVCommandStatus_OK
-						   messageAsString:msg_error];
-	[resultsu setKeepCallbackAsBool:YES];
-	[self.commandDelegate sendPluginResult:resultsu callbackId:command.callbackId];
-		
-	//[self openCamera:OUT_FRONT];
+	[self openCamera:OUT_FRONT];
     
 
 	//[self userClosedCameraManually];
