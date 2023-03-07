@@ -2,49 +2,59 @@
 #import "UnicoCheckModule.h"
 #import "UnicoCheckViewController.h"
 
+DocumentReader* plugin;
+
 @implementation UnicoCheckModule
 
 NSString *msg_error;
-typedef void (^Callback)(NSString* response);
+
+- (void) sendEvent:(NSString*)data :(NSString*)callbackId {
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:data];
+    [result setKeepCallbackAsBool:YES];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
-	[self openCamera:SMART :successCallback :errorCallback];
+	[self openCamera:SMART];
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:LIVENESS :successCallback :errorCallback];
+	[self openCamera:LIVENESS];
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
-	[self openCamera:CNH_FRONT :successCallback :errorCallback];
+	[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;
-	[self openCamera:CNH_BACK :successCallback :errorCallback];
+	[self openCamera:CNH_BACK];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:RG_FRONT :successCallback :errorCallback];
+	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:RG_FRONT :successCallback :errorCallback];
+	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
 	NSString *callbackId = command.callbackId;
 	
-	[self openCamera:OUT_FRONT :successCallback :errorCallback];
+	[self openCamera:OUT_FRONT];
     
 	/*
 	msg_error = @"Usuário fechou a câmera manualmente";
+							   
+	pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	
 	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
 	[self.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -55,10 +65,10 @@ typedef void (^Callback)(NSString* response);
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
 	//self.UnicoCallbackId = command.callbackId;  
-	[self openCamera:OUT_BACK :successCallback :errorCallback];
+	[self openCamera:OUT_BACK];
 }
 
-- (void)openCamera: (CameraMode)cameraMode :(Callback)successCallback :(Callback)errorCallback{
+- (void)openCamera: (CameraMode)cameraMode {
   
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -157,12 +167,14 @@ typedef void (^Callback)(NSString* response);
   
 	
 		msg_error = @"Usuário fechou a câmera manualmente";
-			
+		/*	
 		CDVPluginResult* result = [CDVPluginResult
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId.callbackId];
+		*/
+		[self sendEvent:msg_error :DocumentReader.command.callbackId];
     
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
