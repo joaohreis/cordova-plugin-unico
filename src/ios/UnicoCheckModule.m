@@ -44,7 +44,7 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	self.UnicoCallbackId = command;
+	self.UnicoCallbackId = command.callbackId;
 	
 	[self openCamera:OUT_FRONT];
     
@@ -172,8 +172,8 @@ NSString *msg_error;
 		[result setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:result callbackId:UnicoCheckModule.command.callbackId];
 		*/
-		NSString* callbackId = self.UnicoCallbackId.command.callbackId;
-		[self sendEvent:msg_error :callbackId];
+		
+		[self sendEvent:msg_error :UnicoCallbackId];
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
