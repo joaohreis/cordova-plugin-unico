@@ -2,15 +2,9 @@
 #import "UnicoCheckModule.h"
 #import "UnicoCheckViewController.h"
 
-UnicoCheckModule* plugin;
-
 @implementation UnicoCheckModule
 
 NSString *msg_error;
-
-static CDVInvokedUrlCommand* _command;
-
-+ (void) setCommand:(CDVInvokedUrlCommand*)command { _command = command; }
 
 - (void) sendEvent:(NSString*)data :(NSString*)callbackId {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:data];
@@ -50,8 +44,7 @@ static CDVInvokedUrlCommand* _command;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	[UnicoCheckModule setCommand:command];
-    plugin = self;
+	self.UnicoCallbackId = command.callbackId;
 	
 	[self openCamera:OUT_FRONT];
     
@@ -172,14 +165,14 @@ static CDVInvokedUrlCommand* _command;
   
 	
 		msg_error = @"Usuário fechou a câmera manualmente";
-		
+		/*
 		CDVPluginResult* result = [CDVPluginResult
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
 		[self.commandDelegate sendPluginResult:result callbackId:UnicoCheckModule.command.callbackId];
-		
-    
+		*/
+		[self sendEvent:msg_error :self.UnicoCallbackId.command.callbackId];
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
