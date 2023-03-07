@@ -173,7 +173,7 @@ NSString *msg_error;
 		[self.commandDelegate sendPluginResult:result callbackId:UnicoCheckModule.command.callbackId];
 		*/
 		
-		[self sendEvent:msg_error :UnicoCallbackId];
+		[self sendEvent:msg_error :self.UnicoCallbackId];
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
