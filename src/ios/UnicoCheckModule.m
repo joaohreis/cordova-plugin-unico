@@ -40,16 +40,16 @@ NSString *msg_error;
 	
 	NSString *callbackId = command.callbackId;
 	
-	[self openCamera:OUT_FRONT];
+	[self openCamera:OUT_FRONT :successCallback :errorCallback];
     
-	
+	/*
 	msg_error = @"Usuário fechou a câmera manualmente";
 	
 	CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg_error];
 	[self.commandDelegate sendPluginResult:result callbackId:callbackId];
 	
 	//[self userClosedCameraManually];
-	
+	*/
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
@@ -57,7 +57,7 @@ NSString *msg_error;
 	[self openCamera:OUT_BACK];
 }
 
-- (void)openCamera: (CameraMode)cameraMode {
+- (void)openCamera: (CameraMode)cameraMode :(Callback)successCallback :(Callback)errorCallback{
   
   dispatch_async(dispatch_get_main_queue(), ^{
     
