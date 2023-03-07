@@ -62,7 +62,7 @@ __weak UnicoCheckModule* weakSelf;
 	
 	
 		
-	[weakSelf openCamera:OUT_FRONT];
+	//[weakSelf openCamera:OUT_FRONT];
     
 
 	//[self userClosedCameraManually];
