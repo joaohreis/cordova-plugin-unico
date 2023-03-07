@@ -6,7 +6,7 @@
 @interface UnicoCheckModule : CDVPlugin
 {}
 
-@property (nonatomic, strong) CDVInvokedUrlCommand* UnicoCallbackId;
+//@property (nonatomic, strong) CDVInvokedUrlCommand* UnicoCallbackId;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
 	SMART,

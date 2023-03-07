@@ -46,7 +46,7 @@ NSString *msg_error;
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
-	NSString *callbackId = command.callbackId;
+	//NSString *callbackId = command.callbackId;
 	
 	[self openCamera:OUT_FRONT];
     
