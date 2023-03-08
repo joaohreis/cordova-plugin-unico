@@ -8,5 +8,5 @@ repositories {
 
 dependencies {
     /* unico */
-	implementation 'com.github.acesso-io:acessobio-android:4.2.6'
+	implementation 'com.github.acesso-io:acessobio-android:4.2.10'
 }
