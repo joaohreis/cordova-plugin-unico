@@ -6,56 +6,68 @@
 
 NSString *msg_error;
 
-__weak UnicoCheckModule* weakSelf;
-
 
 - (void) sendEventError:(NSString*)data :(NSString*)callbackId {
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:data];
-    [result setKeepCallbackAsBool:YES];
-    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+	NSTimeInterval delayInSeconds = 1.5;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:data];
+		[result setKeepCallbackAsBool:YES];
+		[self.commandDelegate sendPluginResult:result callbackId:callbackId];
+	});
 }
 
-- (void) sendEventSucesso:(NSString*)data :(NSString*)callbackId {
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:data];
-    [result setKeepCallbackAsBool:YES];
-    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+- (void) sendEventSucesso:(NSString*)data64 :(NSString*)jwt :(NSString*)callbackId {
+	
+	NSMutableDictionary* resultDict = [NSMutableDictionary new];
+    resultDict[@"data64"] = data64;
+    resultDict[@"jwt"] = jwt;
+
+	NSTimeInterval delayInSeconds = 1.5;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		CDVPluginResult* result = [CDVPluginResult
+								   resultWithStatus: CDVCommandStatus_OK
+								   messageAsDictionary: resultDict
+								   ];
+		[result setKeepCallbackAsBool:YES];
+		[self.commandDelegate sendPluginResult:result callbackId:callback];
+	});
 }
 
 - (void) startCameraSmart:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;
+	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:SMART];
 }
 
 - (void) startCameraLiveness:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self openCamera:LIVENESS];
 }
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;
+	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;
+	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:CNH_BACK];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
-	
 	self.UnicoCallbackId = command.callbackId;
 	[self openCamera:OUT_FRONT];
-	
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
@@ -75,110 +87,39 @@ __weak UnicoCheckModule* weakSelf;
     unicoView.acessoBioModule = self;
     
     [view presentViewController:unicoView animated:YES completion:nil];
-	
    
   });
 }
 
-- (void)onSucessCamera: (NSString *)msg {
+- (void)onSucessCamera: (NSString *)data64 :(NSString *)jwt  {
   
     //[self sendEventWithName:@"onSuccess" body:@{@"objResult": msg}];
-	/*
-    CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_OK
-                               messageAsString:msg];
-	[result setKeepCallbackAsBool:YES];
-
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-    */
+	[self sendEventSucesso:data64 :jwt :self.UnicoCallbackId];
 }
 
 - (void)onErrorCameraFace:(NSString *)error {
-  /*
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:error];
-	[result setKeepCallbackAsBool:YES];							   
-
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  */
+	[self sendEventError:error :self.UnicoCallbackId];
 }
 
 - (void)onErrorAcessoBioManager:(NSString *)error {
-  /*
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:error];
-
-	[result setKeepCallbackAsBool:YES];
-	
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  */
+	[self sendEventError:error :self.UnicoCallbackId];
 }
 
 - (void)systemClosedCameraTimeoutFaceInference {
- /* //[self sendEventWithName:@"onError" body:@{@"objResult": @"Timeout de inferencia inteligente de face excedido."}];
-  NSString* msg = [NSString stringWithFormat: @"Timeout de inferencia inteligente de face excedido."];
-  CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:msg];
-
-	[result setKeepCallbackAsBool:YES];
-
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-	*/
+	msg_error = @"Timeout de inferencia inteligente de face excedido.";
+	[self sendEventError:msg_error :self.UnicoCallbackId];
 }
 
 - (void)systemClosedCameraTimeoutSession {
-	/*
-	//[self sendEventWithName:@"onError" body:@{@"objResult": @"Tempo de sessão excedido"}];
-	NSString* msg = [NSString stringWithFormat: @"Tempo de sessão excedido"];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:msg];
-
-	[result setKeepCallbackAsBool:YES];
-
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-	*/
+	msg_error = @"Tempo de sessão excedido";
+	[self sendEventError:msg_error :self.UnicoCallbackId];
 }
 
 - (void)userClosedCameraManually {
-	
-	
-	/*
-    //[self sendEventWithName:@"onError" body:@{@"objResult": @"Usuário fechou a câmera manualmente"}];
-	NSString* msg = [NSString stringWithFormat: @"Usuário fechou a câmera manualmente"];
-	CDVPluginResult* result = [CDVPluginResult
-                               resultWithStatus:CDVCommandStatus_ERROR
-                               messageAsString:msg];
-
-	[result setKeepCallbackAsBool:YES];
-
-    [self.commandDelegate sendPluginResult:result callbackId:self.UnicoCallbackId];
-  */
-  
-  
-	NSTimeInterval delayInSeconds = 1.5;
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-	  
-		msg_error = @"Usuário fechou a câmera manualmente";
-		[self sendEventError:msg_error :self.UnicoCallbackId];
-		
-	});
-  
-		
-		
-		//[weakSelf sendEventError:msg_error :weakSelf.UnicoCallbackId];
-	/*
-	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
-
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait" message:mensagem delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
-	[alert show];
-	*/
+	msg_error = @"Usuário fechou a câmera manualmente";
+	[self sendEventError:msg_error :self.UnicoCallbackId];	
 }
 
 -(void)showAlert{

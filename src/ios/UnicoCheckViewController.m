@@ -169,7 +169,7 @@
 }
 
 - (void)onSuccessSelfie:(SelfieResult *)result {
-   [self.acessoBioModule onSucessCamera:result.base64];
+   [self.acessoBioModule onSucessCamera:result.base64 result.jwt];
 //  [self.acessoBioModule onSucessCamera: @"Selfie capturada com sucesso"];
   [self sair];
 }
@@ -181,7 +181,7 @@
 }
 
 - (void)onSuccessDocument: (DocumentResult *)result {
-   [self.acessoBioModule onSucessCamera:result.base64];
+   [self.acessoBioModule onSucessCamera:result.base64 result.jwt];
 //  [self.acessoBioModule onSucessCamera: @"Documento capturado com sucesso"];
   [self sair];
 }
