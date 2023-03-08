@@ -3,7 +3,7 @@
 @implementation UnicoTheme
 
 - (id)getColorSilhouetteError {
-    return [UIColor redColor];
+    return "#E42112";
 }
 
 - (id)getColorSilhouetteSuccess {
@@ -11,51 +11,51 @@
 }
 
 - (id)getColorSilhouetteNeutral {
-    return [UIColor yellowColor];
+    return "#28A54C";
 }
 
 - (id)getColorBackground {
-    return nil;
+    return "#FFFFFF";
 }
 
 - (id)getColorBackgroundBottomDocument {
-    return nil;
+    return "#FFFFFF";;
 }
 
 - (id)getColorBackgroundButtonPopupError {
-    return nil;
+    return "#E42112";
 }
 
 - (id)getColorBackgroundPopupError {
-    return nil;
+    return "#E42112";
 }
 
 - (id)getColorBackgroundTakePictureButton {
-    return nil;
+    return "#951AD6";
 }
 
 - (id)getColorBoxMessage {
-    return nil;
+    return "#FFFFFF";
 }
 
 - (id)getColorIconTakePictureButton {
-    return nil;
+    return "#FFFFFF";
 }
 
 - (id)getColorTextBottomDocument {
-    return nil;
+    return "#000000";
 }
 
 - (id)getColorTextButtonPopupError {
-    return nil;
+    return "#FFFFFF";
 }
 
 - (id)getColorTextMessage {
-    return nil;
+    return "#000000";
 }
 
 - (id)getColorTextPopupError {
-    return nil;
+    return "#FFFFFF";
 }
 
 @end
