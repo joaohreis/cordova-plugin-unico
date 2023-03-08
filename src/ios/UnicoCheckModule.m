@@ -183,7 +183,7 @@ __weak UnicoCheckModule* weakSelf;
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
-		[weakSelf.commandDelegate sendPluginResult:result callbackId:UnicoCallbackId];
+		[weakSelf.commandDelegate sendPluginResult:result callbackId:weakSelf.UnicoCallbackId];
 		
 		
 		//[weakSelf sendEvent:msg_error :self.UnicoCallbackId];
