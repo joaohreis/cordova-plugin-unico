@@ -124,14 +124,14 @@ NSString *msg_error;
 
 - (void)onErrorSelfie:(NSString *)code :(NSString *)desc {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	msg_error = @("%@ | %@)", code, desc);
-	[self sendEventError:msg_error :self.UnicoCallbackId];
+	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
+	[self sendEventError:str :self.UnicoCallbackId];
 }
 
 - (void)onErrorDocument:(NSString *)code :(NSString *)desc {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	msg_error = @("%@ | %@)", code, desc);
-	[self sendEventError:msg_error :self.UnicoCallbackId];
+	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
+	[self sendEventError:str :self.UnicoCallbackId];
 }
 
 -(void)showAlert{
