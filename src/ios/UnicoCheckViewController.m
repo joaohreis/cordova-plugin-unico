@@ -169,7 +169,7 @@
 }
 
 - (void)onSuccessSelfie:(SelfieResult *)result {
-   [self.acessoBioModule onSucessCamera:result.base64 result.jwt];
+   [self.acessoBioModule onSucessCamera:result.base64 :result.jwt];
 //  [self.acessoBioModule onSucessCamera: @"Selfie capturada com sucesso"];
   [self sair];
 }
@@ -181,7 +181,7 @@
 }
 
 - (void)onSuccessDocument: (DocumentResult *)result {
-   [self.acessoBioModule onSucessCamera:result.base64 result.jwt];
+   [self.acessoBioModule onSucessCamera:result.base64 :result.jwt];
 //  [self.acessoBioModule onSucessCamera: @"Documento capturado com sucesso"];
   [self sair];
 }
@@ -189,6 +189,8 @@
 - (void)onErrorDocument:(ErrorBio *)errorBio {
   NSLog(@"onErrorDocument");
   NSLog(@"%@", errorBio.desc);
+  //[self.acessoBioModule onErrorDocument:errorBio.desc];
+  [self sair];
 }
 
 - (void)onErrorCameraFace:(NSString *)error {
