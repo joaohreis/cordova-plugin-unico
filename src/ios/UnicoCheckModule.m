@@ -61,8 +61,13 @@ __weak UnicoCheckModule* weakSelf;
 	[weakSelf.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 	
 	
+	NSTimeInterval delayInSeconds = 2.0;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+	  [weakSelf openCamera:OUT_FRONT];
+	});
 		
-	[weakSelf openCamera:OUT_FRONT];
+	//[weakSelf openCamera:OUT_FRONT];
     
 
 	//[self userClosedCameraManually];
@@ -76,21 +81,18 @@ __weak UnicoCheckModule* weakSelf;
 
 - (void)openCamera: (CameraMode)cameraMode {
   
-  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-	  dispatch_async(dispatch_get_main_queue(), ^{
-		
-		UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
-		
-		UIViewController *view = [[[UIApplication sharedApplication] delegate] window].rootViewController;
-		unicoView.viewOrigin = view;
-		unicoView.mode = cameraMode;
-		unicoView.acessoBioModule = self;
-		
-		[view presentViewController:unicoView animated:YES completion:nil];
-		
-	   
-	  });
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    UnicoCheckViewController *unicoView = [UnicoCheckViewController new];
+    
+    UIViewController *view = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+    unicoView.viewOrigin = view;
+    unicoView.mode = cameraMode;
+    unicoView.acessoBioModule = self;
+    
+    [view presentViewController:unicoView animated:YES completion:nil];
+	
+   
   });
 }
 
