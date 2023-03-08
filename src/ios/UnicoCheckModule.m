@@ -9,7 +9,13 @@ NSString *msg_error;
 __weak UnicoCheckModule* weakSelf;
 
 
-- (void) sendEvent:(NSString*)data :(NSString*)callbackId {
+- (void) sendEventError:(NSString*)data :(NSString*)callbackId {
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:data];
+    [result setKeepCallbackAsBool:YES];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
+- (void) sendEventSucesso:(NSString*)data :(NSString*)callbackId {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:data];
     [result setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -61,7 +67,7 @@ __weak UnicoCheckModule* weakSelf;
 	[weakSelf.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 	
 	
-	NSTimeInterval delayInSeconds = 2.0;
+	NSTimeInterval delayInSeconds = 1.0;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 	  [weakSelf openCamera:OUT_FRONT];
@@ -177,25 +183,18 @@ __weak UnicoCheckModule* weakSelf;
   */
   
   
-	NSTimeInterval delayInSeconds = 2.0;
+	NSTimeInterval delayInSeconds = 1.0;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 	  
 		msg_error = @"Usuário fechou a câmera manualmente";
-		
-		CDVPluginResult* result = [CDVPluginResult
-							   resultWithStatus:CDVCommandStatus_ERROR
-							   messageAsString:msg_error];
-		[result setKeepCallbackAsBool:YES];
-		[weakSelf.commandDelegate sendPluginResult:result callbackId:weakSelf.UnicoCallbackId];
+		[weakSelf sendEventError:msg_error :weakSelf.UnicoCallbackId];
 		
 	});
   
-	
 		
 		
-		
-		//[weakSelf sendEvent:msg_error :self.UnicoCallbackId];
+		//[weakSelf sendEventError:msg_error :weakSelf.UnicoCallbackId];
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
