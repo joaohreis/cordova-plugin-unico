@@ -122,13 +122,13 @@ NSString *msg_error;
 	[self sendEventError:msg_error :self.UnicoCallbackId];	
 }
 
-- (void)onErrorSelfie:(NSString *)code :(NSString *)desc {
+- (void)onErrorSelfie:(NSInteger *)code :(NSString *)desc {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
 	[self sendEventError:str :self.UnicoCallbackId];
 }
 
-- (void)onErrorDocument:(NSString *)code :(NSString *)desc {
+- (void)onErrorDocument:(NSInteger *)code :(NSString *)desc {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
 	[self sendEventError:str :self.UnicoCallbackId];

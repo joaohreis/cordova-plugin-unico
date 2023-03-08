@@ -31,8 +31,8 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 - (void)onSucessCamera: (NSString *)data64 :(NSString *)jwt;
 - (void)onErrorCameraFace:(NSString *)error;
 - (void)onErrorAcessoBioManager:(NSString *)error;
-- (void)onErrorSelfie:(NSString *)code :(NSString *)desc;
-- (void)onErrorDocument:(NSString *)code :(NSString *)desc;
+- (void)onErrorSelfie:(NSInteger *)code :(NSString *)desc;
+- (void)onErrorDocument:(NSInteger *)code :(NSString *)desc;
 - (void)systemClosedCameraTimeoutFaceInference;
 - (void)systemClosedCameraTimeoutSession;
 - (void)userClosedCameraManually;
