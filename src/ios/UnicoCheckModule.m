@@ -166,7 +166,7 @@ __weak UnicoCheckModule* weakSelf;
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 	  
 		msg_error = @"Usuário fechou a câmera manualmente";
-		[weakSelf sendEventError:msg_error :weakSelf.UnicoCallbackId];
+		[self sendEventError:msg_error :self.UnicoCallbackId];
 		
 	});
   
