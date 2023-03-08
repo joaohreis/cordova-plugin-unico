@@ -54,29 +54,7 @@ __weak UnicoCheckModule* weakSelf;
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
 	
 	self.UnicoCallbackId = command.callbackId;
-	weakSelf = self;
-	
-	
-	
-	msg_error = @"RETORNO ANTES DE CHAMAR CAMERA";
-		
-	CDVPluginResult* result = [CDVPluginResult
-						   resultWithStatus:CDVCommandStatus_ERROR
-						   messageAsString:msg_error];
-	[result setKeepCallbackAsBool:YES];
-	[weakSelf.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-	
-	
-	NSTimeInterval delayInSeconds = 1.0;
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-	  [weakSelf openCamera:OUT_FRONT];
-	});
-		
-	//[weakSelf openCamera:OUT_FRONT];
-    
-
-	//[self userClosedCameraManually];
+	[self openCamera:OUT_FRONT];
 	
 }
 
@@ -183,7 +161,7 @@ __weak UnicoCheckModule* weakSelf;
   */
   
   
-	NSTimeInterval delayInSeconds = 1.0;
+	NSTimeInterval delayInSeconds = 1.5;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 	  
