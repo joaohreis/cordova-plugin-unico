@@ -178,15 +178,15 @@ __weak UnicoCheckModule* weakSelf;
   
 	
 		msg_error = @"Usuário fechou a câmera manualmente";
-		/*
+		
 		CDVPluginResult* result = [CDVPluginResult
 							   resultWithStatus:CDVCommandStatus_ERROR
 							   messageAsString:msg_error];
 		[result setKeepCallbackAsBool:YES];
-		[self.commandDelegate sendPluginResult:result callbackId:UnicoCheckModule.command.callbackId];
-		*/
+		[weakSelf.commandDelegate sendPluginResult:result callbackId:UnicoCallbackId];
 		
-		[self sendEvent:msg_error :self.UnicoCallbackId];
+		
+		//[weakSelf sendEvent:msg_error :self.UnicoCallbackId];
 	/*
 	NSString *mensagem = [[NSString alloc] initWithFormat:@"UnicoCallbackId 2: %@", self.UnicoCallbackId];
 
