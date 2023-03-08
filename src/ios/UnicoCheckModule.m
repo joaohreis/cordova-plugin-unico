@@ -122,6 +122,18 @@ NSString *msg_error;
 	[self sendEventError:msg_error :self.UnicoCallbackId];	
 }
 
+- (void)onErrorSelfie:(NSString *)code :(NSString *)desc {
+    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
+	msg_error = @("%@ | %@)", code, desc);
+	[self sendEventError:msg_error :self.UnicoCallbackId];
+}
+
+- (void)onErrorDocument:(NSString *)code :(NSString *)desc {
+    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
+	msg_error = @("%@ | %@)", code, desc);
+	[self sendEventError:msg_error :self.UnicoCallbackId];
+}
+
 -(void)showAlert{
   
   UIAlertController *alert = [UIAlertController new];
