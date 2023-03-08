@@ -117,8 +117,9 @@
   [[unicoCheck build] prepareDocumentCamera:self config: [UnicoConfig new]];
 }
 
-- (void)onErrorAcessoBioManager:(NSString *)error {
-  [self.acessoBioModule onErrorAcessoBioManager:error];
+- (void)onErrorAcessoBioManager:(ErrorBio *)errorBio {
+  NSLog(@"onErrorAcessoBioManager");
+  [self.acessoBioModule onErrorAcessoBioManager:errorBio.code :errorBio.desc];
   [self sair];
 }
 
@@ -169,8 +170,8 @@
 }
 
 - (void)onSuccessSelfie:(SelfieResult *)result {
-   [self.acessoBioModule onSucessCamera:result.base64 :result.encrypted];
-//  [self.acessoBioModule onSucessCamera: @"Selfie capturada com sucesso"];
+  NSLog(@"onSuccessSelfie");
+  [self.acessoBioModule onSucessCamera:result.base64 :result.encrypted];
   [self sair];
 }
 
@@ -181,8 +182,8 @@
 }
 
 - (void)onSuccessDocument: (DocumentResult *)result {
-   [self.acessoBioModule onSucessCamera:result.base64 :result.encrypted];
-//  [self.acessoBioModule onSucessCamera: @"Documento capturado com sucesso"];
+  NSLog(@"onSuccessDocument");
+  [self.acessoBioModule onSucessCamera:result.base64 :result.encrypted];
   [self sair];
 }
 
@@ -194,7 +195,6 @@
 
 - (void)onErrorCameraFace:(NSString *)error {
   NSLog(@"onErrorCameraFace");
-  NSLog(@"%@", error);
   [self.acessoBioModule onErrorCameraFace:error];
   [self sair];
 }

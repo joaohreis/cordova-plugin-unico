@@ -102,35 +102,38 @@ NSString *msg_error;
 	[self sendEventError:error :self.UnicoCallbackId];
 }
 
-- (void)onErrorAcessoBioManager:(NSString *)error {
-    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	[self sendEventError:error :self.UnicoCallbackId];
-}
-
-- (void)systemClosedCameraTimeoutFaceInference {
-	msg_error = @"Timeout de inferencia inteligente de face excedido.";
-	[self sendEventError:msg_error :self.UnicoCallbackId];
-}
-
-- (void)systemClosedCameraTimeoutSession {
-	msg_error = @"Tempo de sessão excedido";
-	[self sendEventError:msg_error :self.UnicoCallbackId];
-}
-
-- (void)userClosedCameraManually {
-	msg_error = @"Usuário fechou a câmera manualmente";
-	[self sendEventError:msg_error :self.UnicoCallbackId];	
-}
-
-- (void)onErrorSelfie:(NSInteger *)code :(NSString *)desc {
+- (void)onErrorAcessoBioManager:(NSInteger *)code :(NSString *)desc {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
 	[self sendEventError:str :self.UnicoCallbackId];
 }
 
+- (void)systemClosedCameraTimeoutFaceInference {
+	msg_error = @"2 | Timeout de inferencia inteligente de face excedido.";
+	[self sendEventError:msg_error :self.UnicoCallbackId];
+}
+
+- (void)systemClosedCameraTimeoutSession {
+	msg_error = @"3 | Tempo de sessão excedido";
+	[self sendEventError:msg_error :self.UnicoCallbackId];
+}
+
+- (void)userClosedCameraManually {
+	msg_error = @"4 | Usuário fechou a câmera manualmente";
+	[self sendEventError:msg_error :self.UnicoCallbackId];	
+}
+
+- (void)onErrorSelfie:(NSInteger *)code :(NSString *)desc {
+    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
+	//NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
+	NSString *str = [NSString stringWithFormat: @"1 | %@", desc];
+	[self sendEventError:str :self.UnicoCallbackId];
+}
+
 - (void)onErrorDocument:(NSInteger *)code :(NSString *)desc {
     //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
-	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
+	//NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
+	NSString *str = [NSString stringWithFormat: @"0 | %@", desc];
 	[self sendEventError:str :self.UnicoCallbackId];
 }
 
