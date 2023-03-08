@@ -31,7 +31,7 @@ NSString *msg_error;
 								   messageAsDictionary: resultDict
 								   ];
 		[result setKeepCallbackAsBool:YES];
-		[self.commandDelegate sendPluginResult:result callbackId:callback];
+		[self.commandDelegate sendPluginResult:result callbackId:callbackId];
 	});
 }
 
