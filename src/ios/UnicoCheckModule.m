@@ -6,7 +6,6 @@
 
 NSString *msg_error;
 
-
 - (void) sendEventError:(NSString*)data :(NSString*)callbackId {
 	NSTimeInterval delayInSeconds = 1.5;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -71,7 +70,7 @@ NSString *msg_error;
 }
 
 - (void) startCameraOUTBack:(CDVInvokedUrlCommand*)command {
-	//self.UnicoCallbackId = command.callbackId;  
+	self.UnicoCallbackId = command.callbackId;  
 	[self openCamera:OUT_BACK];
 }
 
@@ -93,17 +92,14 @@ NSString *msg_error;
 
 - (void)onSucessCamera: (NSString *)data64 :(NSString *)jwt  {
   
-    //[self sendEventWithName:@"onSuccess" body:@{@"objResult": msg}];
 	[self sendEventSucesso:data64 :jwt :self.UnicoCallbackId];
 }
 
 - (void)onErrorCameraFace:(NSString *)error {
-    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	[self sendEventError:error :self.UnicoCallbackId];
 }
 
 - (void)onErrorAcessoBioManager:(NSInteger *)code :(NSString *)desc {
-    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
 	[self sendEventError:str :self.UnicoCallbackId];
 }
@@ -124,31 +120,15 @@ NSString *msg_error;
 }
 
 - (void)onErrorSelfie:(NSInteger *)code :(NSString *)desc {
-    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	//NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
 	NSString *str = [NSString stringWithFormat: @"1 | %@", desc];
 	[self sendEventError:str :self.UnicoCallbackId];
 }
 
 - (void)onErrorDocument:(NSInteger *)code :(NSString *)desc {
-    //[self sendEventWithName:@"onError" body:@{@"objResult": error}];
 	//NSString *str = [NSString stringWithFormat: @"%@ | %@", code, desc];
 	NSString *str = [NSString stringWithFormat: @"0 | %@", desc];
 	[self sendEventError:str :self.UnicoCallbackId];
-}
-
--(void)showAlert{
-  
-  UIAlertController *alert = [UIAlertController new];
-  alert.title = @"teste";
-  alert.message = @"descriptiuon";
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    UIViewController *view = [UIApplication sharedApplication].delegate.window.rootViewController;
-    [view presentViewController:alert animated:YES completion:nil];
-    
-  });
-  
 }
 
 // MARK: - Supported Events

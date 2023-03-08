@@ -323,8 +323,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     public void onSuccessSelfie(ResultCamera result) {
         //sendEvent(reactContext, "onSuccess", result.getBase64()); //base64
         // sendEvent(reactContext, "onSuccess", result.getEncrypted()); //JWT
-        // sendEvent(reactContext, "onSuccess", "Selfie capturada com sucesso");
-		//callbackContext.sendPluginResult(result.getBase64());
 		
 		HashMap status = new HashMap();
         status.put("data64",result.getBase64());
@@ -344,8 +342,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     public void onSuccessDocument(ResultCamera result) {
         //sendEvent(reactContext, "onSuccess", result.getBase64()); //base64
         // sendEvent(reactContext, "onSuccess", resultCamera.getEncrypted()); //JWT
-        // sendEvent(reactContext, "onSuccess", "Documento capturado com sucesso");
-		//callbackContext.sendPluginResult(result.getBase64());
 		
 		HashMap status_doc = new HashMap();
         status_doc.put("data64",result.getBase64());
