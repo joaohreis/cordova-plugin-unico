@@ -7,7 +7,7 @@
 NSString *msg_error;
 
 - (void) sendEventError:(NSString*)data :(NSString*)callbackId {
-	NSTimeInterval delayInSeconds = 3.0;
+	NSTimeInterval delayInSeconds = 2.0;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:data];
@@ -22,7 +22,7 @@ NSString *msg_error;
     resultDict[@"data64"] = data64;
     resultDict[@"jwt"] = jwt;
 
-	NSTimeInterval delayInSeconds = 3.0;
+	NSTimeInterval delayInSeconds = 2.0;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		CDVPluginResult* result = [CDVPluginResult
