@@ -277,7 +277,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                         unicoCheckCamera.prepareDocumentCamera(unicoConfigDefault, new DocumentCameraListener() {
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Document cameraOpener) {
-                                //cameraOpener.open(DocumentType.None, UnicoCheckModule.this);
+                                cameraOpener.open(DocumentType.None, UnicoCheckModule.this);
                             }
 
                             @Override
