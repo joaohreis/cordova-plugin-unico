@@ -11,7 +11,7 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBoxMessage() {
-        return "#FFFFFF";
+        return "#951AD6";
     }
 
     @Override
