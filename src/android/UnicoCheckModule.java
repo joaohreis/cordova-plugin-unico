@@ -98,10 +98,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 	@Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
-		activity = this.cordova.getActivity();
-        window = activity.getWindow();
-		window.setStatusBarColor(Color.parseColor("#951AD6"));
-	
 		this.callbackContext = callbackContext;
 		
 		if (!cordova.hasPermission(permissions[0])) 
@@ -202,6 +198,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                 @Override
                 public void run() {
 					
+					activity = cordova.getActivity();
+					window = activity.getWindow();
+					window.setStatusBarColor(Color.parseColor("#951AD6"));
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
