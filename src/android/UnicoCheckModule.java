@@ -196,14 +196,12 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private void openCamera(CameraMode mode) {
         if (cordova.hasPermission(permissions[0])) {
 			
-            cordova.getActivity().runOnUiThread(new Runnable() {
+			activity = cordova.getActivity();
+			window = activity.getWindow();
+					
+            activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-					
-					activity = cordova.getActivity();
-					window = activity.getWindow();
-					window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // SDK 21
-					window.setStatusBarColor(Color.RED);
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
@@ -211,6 +209,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
+								window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // SDK 21
+								window.setStatusBarColor(Color.RED);
                             }
 
                             @Override
@@ -224,6 +224,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
+								window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // SDK 21
+								window.setStatusBarColor(Color.RED);
                             }
 
                             @Override
