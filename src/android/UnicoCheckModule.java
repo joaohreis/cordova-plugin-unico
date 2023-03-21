@@ -53,6 +53,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private static UnicoTheme unicoTheme  = new UnicoTheme();
 	public CallbackContext callbackContext;
 	private AppCompatActivity activity;
+	private Window window;
 
     private static final String [] permissions = {
 		Manifest.permission.CAMERA
