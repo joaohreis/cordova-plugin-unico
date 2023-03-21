@@ -13,6 +13,7 @@ import android.graphics.Color;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.acesso.acessobio_android.AcessoBioListener;
 import com.acesso.acessobio_android.iAcessoBioDocument;
@@ -51,6 +52,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private static UnicoConfigDefault unicoConfigDefault = new UnicoConfigDefault();
     private static UnicoTheme unicoTheme  = new UnicoTheme();
 	public CallbackContext callbackContext;
+	private AppCompatActivity activity;
 
     private static final String [] permissions = {
 		Manifest.permission.CAMERA
