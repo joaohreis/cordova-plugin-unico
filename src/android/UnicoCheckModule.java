@@ -94,8 +94,9 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 	@Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
-		Window window = activity.getWindow();
-		window.setStatusBarColor(ContextCompat.getColor(activity,Color.parseColor("#951AD6")));
+		activity = this.cordova.getActivity();
+        window = activity.getWindow();
+		window.setStatusBarColor(Color.parseColor("#951AD6"));
 	
 		this.callbackContext = callbackContext;
 		
