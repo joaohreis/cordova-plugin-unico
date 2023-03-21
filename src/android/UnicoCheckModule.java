@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.app.LocalActivityManager;
 import android.view.Window;
+import android.graphics.Color;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
