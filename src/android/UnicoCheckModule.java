@@ -8,7 +8,9 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Context;
 import android.app.LocalActivityManager;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.graphics.Color;
 
 import androidx.annotation.RequiresApi;
