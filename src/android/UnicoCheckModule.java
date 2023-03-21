@@ -202,9 +202,8 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
 					
 					activity = cordova.getActivity();
 					window = activity.getWindow();
-					window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); // SDK 19-30
 					window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // SDK 21
-					window.setStatusBarColor(Color.parseColor("#951AD6"));
+					window.setStatusBarColor(Color.RED);
 					
                     if (mode == CameraMode.SMART) {
                         build(true);
