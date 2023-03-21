@@ -8,14 +8,9 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Context;
 import android.app.LocalActivityManager;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.graphics.Color;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.acesso.acessobio_android.AcessoBioListener;
 import com.acesso.acessobio_android.iAcessoBioDocument;
@@ -54,8 +49,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private static UnicoConfigDefault unicoConfigDefault = new UnicoConfigDefault();
     private static UnicoTheme unicoTheme  = new UnicoTheme();
 	public CallbackContext callbackContext;
-	private AppCompatActivity activity;
-	private Window window;
 
     private static final String [] permissions = {
 		Manifest.permission.CAMERA
@@ -196,10 +189,7 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     private void openCamera(CameraMode mode) {
         if (cordova.hasPermission(permissions[0])) {
 			
-			activity = cordova.getActivity();
-			window = activity.getWindow();
-					
-            activity.runOnUiThread(new Runnable() {
+            cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 					
@@ -209,8 +199,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
-								window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // SDK 21
-								window.setStatusBarColor(Color.RED);
                             }
 
                             @Override
@@ -224,8 +212,6 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
                             @Override
                             public void onCameraReady(UnicoCheckCameraOpener.Camera cameraOpener) {
                                 cameraOpener.open(UnicoCheckModule.this);
-								window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // SDK 21
-								window.setStatusBarColor(Color.RED);
                             }
 
                             @Override
