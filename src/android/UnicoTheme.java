@@ -41,7 +41,7 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorBackgroundTakePictureButton() {
-        return "#191919";
+        return "#951AD6";
     }
 
     @Override
@@ -71,6 +71,6 @@ public class UnicoTheme implements IAcessoBioTheme {
 
     @Override
     public Object getColorSilhouetteNeutral() {
-        return "#191919";
+        return "#951AD6";
     }
 }

@@ -11,7 +11,7 @@
 }
 
 - (id)getColorSilhouetteNeutral {
-    return [UIColor colorWithRed: 0.10 green: 0.10 blue: 0.10 alpha: 1.00];
+    return [UIColor colorWithRed: 0.58 green: 0.10 blue: 0.84 alpha: 1.00];
 }
 
 - (id)getColorBackground {
@@ -31,7 +31,7 @@
 }
 
 - (id)getColorBackgroundTakePictureButton {
-    return [UIColor colorWithRed: 0.10 green: 0.10 blue: 0.10 alpha: 1.00];
+    return [UIColor colorWithRed: 0.58 green: 0.10 blue: 0.84 alpha: 1.00];
 }
 
 - (id)getColorBoxMessage {
