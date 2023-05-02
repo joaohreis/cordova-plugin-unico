@@ -44,7 +44,7 @@
 			<source url="https://cdn.cocoapods.org/"/>
 		</config>
 		<pods use-frameworks="true">
-			<pod name="unicocheck-ios" spec="2.3.12"/>
+			<pod name="unicocheck-ios" spec="2.3.17"/>
 		</pods>
 	</podspec>
   </platform>
