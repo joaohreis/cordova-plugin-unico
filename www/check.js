@@ -12,7 +12,6 @@ UnicoCheckModule.startCameraSmart = function (successCallback, errorCallback) {
 }
 
 UnicoCheckModule.startCameraLiveness = function (successCallback, errorCallback) {
-	alert("PROD");
 	cordova.exec(successCallback, errorCallback, PLUGIN_NAME, "startCameraLiveness", []);
 	console.log("startCameraLiveness");
 }
