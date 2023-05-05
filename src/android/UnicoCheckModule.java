@@ -157,19 +157,19 @@ public class UnicoCheckModule extends CordovaPlugin implements AcessoBioListener
     }
     
     private void callDocumentCNHFrontCamera() {
-        this.openCamera(CameraMode.OUT_FRONT);
+        this.openCamera(CameraMode.CNH_FRONT);
     }
       
     private void callDocumentCNHBackCamera() {
-        this.openCamera(CameraMode.OUT_BACK);
+        this.openCamera(CameraMode.CNH_BACK);
     }
 	
 	private void callDocumentRGFrontCamera() {
-        this.openCamera(CameraMode.OUT_FRONT);
+        this.openCamera(CameraMode.RG_FRONT);
     }
     
     private void callDocumentRGBackCamera() {
-        this.openCamera(CameraMode.OUT_BACK);
+        this.openCamera(CameraMode.RG_BACK);
     }
 	
 	private void callDocumentOUTFrontCamera() {
