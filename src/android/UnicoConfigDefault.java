@@ -8,7 +8,7 @@ public class UnicoConfigDefault implements AcessoBioConfigDataSource {
     @Override
     public String getProjectNumber() {
         //return "480761954839809349276448"; //HOMOLOG
-		return "59251343440673415637318"; //PROD
+		return "4105475242746111507635"; //PROD
     }
     
     @NonNull
@@ -41,6 +41,6 @@ public class UnicoConfigDefault implements AcessoBioConfigDataSource {
     @Override
     public String getHostKey() {
         //return "r930Imj0FlHBf/Y8DGRIIYIxhU5SYVm9+nG+kgCNmKGmwmyWhRVuI9vbBHnf6Jfm"; //HOMOLOG
-		return "U1wcQZnRZFj7bUN+grQEdHXuLJA6nmx87ZMQIYtisL2gPHGDY94xz/lHsJ39Eino"; //PROD
+		return "sDkpPS1wOrYryR55XJ0JytTWRtPY5vwv/d4tSnN9OFUOvtbde3l4og8etoOzhYKC"; //PROD
     }
 }
