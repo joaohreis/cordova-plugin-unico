@@ -46,22 +46,22 @@ NSString *msg_error;
 
 - (void) startCameraCNHFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;
-	[self openCamera:OUT_FRONT];
+	[self openCamera:CNH_FRONT];
 }
 
 - (void) startCameraCNHBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;
-	[self openCamera:OUT_BACK];
+	[self openCamera:CNH_BACK];
 }
 
 - (void) startCameraRGFront:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;
-	[self openCamera:OUT_FRONT];
+	[self openCamera:RG_FRONT];
 }
 
 - (void) startCameraRGBack:(CDVInvokedUrlCommand*)command {
 	self.UnicoCallbackId = command.callbackId;
-	[self openCamera:OUT_BACK];
+	[self openCamera:RG_BACK];
 }
 
 - (void) startCameraOUTFront:(CDVInvokedUrlCommand*)command { 
