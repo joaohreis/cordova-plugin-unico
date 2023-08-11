@@ -2,11 +2,11 @@ repositories {
 	google()
     jcenter()
     maven {
-        url "https://jitpack.io"
+        url "https://maven-sdk.unico.run/sdk-mobile" 
     }
 }
 
 dependencies {
     /* unico */
-	implementation 'com.github.acesso-io:acessobio-android:4.2.12'
+	implementation "io.unico:capture:5.1.1"
 }
