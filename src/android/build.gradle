@@ -10,5 +10,5 @@ allprojects {
 
 dependencies {
     /* unico */
-	implementation "io.unico:capture:$version"
+	implementation "io.unico:capture:5.1.1"
 }
