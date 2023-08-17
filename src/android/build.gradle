@@ -8,5 +8,5 @@ repositories {
 
 dependencies {
     /* unico */
-	implementation "io.unico:capture:5.1.1"
+	implementation "io.unico:capture:5.1.2-beta-2"
 }
