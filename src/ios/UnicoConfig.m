@@ -19,8 +19,8 @@
 }
 
 - (NSString * _Nonnull)getMobileSdkAppId {
-    return @"2:56:ios";  //HOMOLOG
-	//return @"2:56:ios";  //PROD
+    //return @"2:56:ios";  //HOMOLOG
+	return @"2:56:ios";  //PROD
 }
 
 - (NSString * _Nonnull)getProjectId {
