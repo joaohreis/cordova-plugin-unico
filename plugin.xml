@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<plugin id="cordova-plugin-unico" version="1.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-unico" version="1.0.3" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 
   <name>Unico Check Module</name>
 
@@ -44,7 +44,7 @@
 			<source url="https://cdn.cocoapods.org/"/>
 		</config>
 		<pods use-frameworks="true">
-			<pod name="unicocheck-ios" spec="2.15.5"/>
+			<pod name="unicocheck-ios" spec="2.15.6"/>
 		</pods>
 	</podspec>
   </platform>
