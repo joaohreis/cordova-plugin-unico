@@ -144,6 +144,8 @@
 - (void)onCameraFailedDocument:(ErrorBio *)message{
   NSLog(@"onCameraFailedDocument");
   NSLog(@"%@", message.desc);
+  [self.acessoBioModule onErrorDocument:message.code :message.desc];
+  [self sair];
 }
 
 - (void)onCameraFailed:(ErrorBio *)message {
